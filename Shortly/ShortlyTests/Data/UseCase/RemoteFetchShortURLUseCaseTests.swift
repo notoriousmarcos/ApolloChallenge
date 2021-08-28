@@ -11,15 +11,16 @@ import XCTest
 class RemoteFetchShortURLUseCaseTests: XCTestCase {
 
     let url = URL(string: "https://api.shrtco.de/v2/shorten")!
+    let urlModel = FetchShortURLUseCaseModel(url: "")
     let mockClient = MockHTTPPostClient()
 
     func testRemoteFetchShortURLUseCase_executeWithValidData_ShouldReturnAValidShortURL() {
         // Arrange
-        mockClient.result = .success(MockResponses.validFetchShortURLUseResponse.toData())
+        mockClient.result = .success(MockResponses.validResponse.toData())
         let sut = RemoteFetchShortURLUseCase(url: url, httpClient: mockClient)
 
         // Act
-        sut.execute(FetchShortURLUseCaseModel(url: "http://example.org/very/long/link.html")) { result in
+        sut.execute(urlModel) { result in
             // Assert
             if case let .success(shortURL) = result {
                 XCTAssertEqual(shortURL, MockResponses.validShortURLModel)
@@ -35,7 +36,7 @@ class RemoteFetchShortURLUseCaseTests: XCTestCase {
         let sut = RemoteFetchShortURLUseCase(url: url, httpClient: mockClient)
 
         // Act
-        sut.execute(FetchShortURLUseCaseModel(url: "http://example.org/very/long/link.html")) { result in
+        sut.execute(urlModel) { result in
             // Assert
             if case let .failure(error) = result {
                 XCTAssertEqual(error, .unknown)
@@ -47,11 +48,11 @@ class RemoteFetchShortURLUseCaseTests: XCTestCase {
 
     func testRemoteFetchShortURLUseCase_executeWithInvalidData_ShouldReturnUnknownError() {
         // Arrange
-        mockClient.result = .success(MockResponses.validFetchShortURLUseResponseWithEmptyData.toData())
+        mockClient.result = .success(MockResponses.validResponseWithEmptyData.toData())
         let sut = RemoteFetchShortURLUseCase(url: url, httpClient: mockClient)
 
         // Act
-        sut.execute(FetchShortURLUseCaseModel(url: "http://example.org/very/long/link.html")) { result in
+        sut.execute(urlModel) { result in
             // Assert
             if case let .failure(error) = result {
                 XCTAssertEqual(error, .unknown)
@@ -61,16 +62,48 @@ class RemoteFetchShortURLUseCaseTests: XCTestCase {
         }
     }
 
-    func testRemoteFetchShortURLUseCase_executeWithEmptyURL_ShouldReturnEmptyURL() {
+    func testRemoteFetchShortURLUseCase_executeWithKnownError_ShouldReturnKnownError() {
         // Arrange
-        mockClient.result = .success(MockResponses.invalidFetchShortURLUseResponseWithEmptyURL.toData())
+        mockClient.result = .success(MockResponses.invalidResponseWithErrorCode(1).toData())
         let sut = RemoteFetchShortURLUseCase(url: url, httpClient: mockClient)
 
         // Act
-        sut.execute(FetchShortURLUseCaseModel(url: "")) { result in
+        sut.execute(urlModel) { result in
             // Assert
             if case let .failure(error) = result {
                 XCTAssertEqual(error, .emptyURL)
+            } else {
+                XCTFail("Should receive a emptyURL error")
+            }
+        }
+    }
+
+    func testRemoteFetchShortURLUseCase_executeWithUnknownStatusCode_ShouldReturnEmptyURL() {
+        // Arrange
+        mockClient.result = .success(MockResponses.invalidResponseWithErrorCode(-1).toData())
+        let sut = RemoteFetchShortURLUseCase(url: url, httpClient: mockClient)
+
+        // Act
+        sut.execute(urlModel) { result in
+            // Assert
+            if case let .failure(error) = result {
+                XCTAssertEqual(error, .unknown)
+            } else {
+                XCTFail("Should receive a unknown error")
+            }
+        }
+    }
+
+    func testRemoteFetchShortURLUseCase_executeWithFailRequest_ShouldReturnUnkownError() {
+        // Arrange
+        mockClient.result = .failure(.serverError)
+        let sut = RemoteFetchShortURLUseCase(url: url, httpClient: mockClient)
+
+        // Act
+        sut.execute(urlModel) { result in
+            // Assert
+            if case let .failure(error) = result {
+                XCTAssertEqual(error, .unknown)
             } else {
                 XCTFail("Should receive a unknown error")
             }
@@ -87,19 +120,21 @@ class RemoteFetchShortURLUseCaseTests: XCTestCase {
                                                         fullShareLink: "https://shrtco.de/share/KCveN",
                                                         originalLink: "http://example.org/very/long/link.html")
 
-        static let validFetchShortURLUseResponse = FetchShortURLUseResponse(ok: true,
+        static let validResponse = FetchShortURLUseResponse(ok: true,
                                                                             error_code: nil,
                                                                             error: nil,
                                                                             result: validShortURLModel)
 
-        static let validFetchShortURLUseResponseWithEmptyData = FetchShortURLUseResponse(ok: true,
-                                                                            error_code: nil,
-                                                                            error: nil,
-                                                                            result: nil)
-
-        static let invalidFetchShortURLUseResponseWithEmptyURL = FetchShortURLUseResponse(ok: false,
-                                                                                         error_code: 1,
-                                                                                         error: "EmptyURL",
+        static let validResponseWithEmptyData = FetchShortURLUseResponse(ok: true,
+                                                                                         error_code: nil,
+                                                                                         error: nil,
                                                                                          result: nil)
+
+        static func invalidResponseWithErrorCode(_ code: Int) -> FetchShortURLUseResponse {
+            FetchShortURLUseResponse(ok: false,
+                                     error_code: code,
+                                     error: "",
+                                     result: nil)
+        }
     }
 }
