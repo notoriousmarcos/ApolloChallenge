@@ -22,7 +22,7 @@
 		775F784426DA642D0039E447 /* FetchShortURLUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F784326DA642D0039E447 /* FetchShortURLUseCase.swift */; };
 		775F784726DA65620039E447 /* FetchShortURLUseCaseModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F784626DA65620039E447 /* FetchShortURLUseCaseModelTests.swift */; };
 		775F784C26DA66700039E447 /* DomainErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F784B26DA66700039E447 /* DomainErrorTests.swift */; };
-		775F784F26DA683C0039E447 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F784E26DA683C0039E447 /* DomainError.swift */; };
+		775F784F26DA683C0039E447 /* FetchShortURLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F784E26DA683C0039E447 /* FetchShortURLError.swift */; };
 		775F785326DA70180039E447 /* FetchAllShortURLUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F785226DA70180039E447 /* FetchAllShortURLUseCase.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +65,7 @@
 		775F784326DA642D0039E447 /* FetchShortURLUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShortURLUseCase.swift; sourceTree = "<group>"; };
 		775F784626DA65620039E447 /* FetchShortURLUseCaseModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShortURLUseCaseModelTests.swift; sourceTree = "<group>"; };
 		775F784B26DA66700039E447 /* DomainErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainErrorTests.swift; sourceTree = "<group>"; };
-		775F784E26DA683C0039E447 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
+		775F784E26DA683C0039E447 /* FetchShortURLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShortURLError.swift; sourceTree = "<group>"; };
 		775F785226DA70180039E447 /* FetchAllShortURLUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllShortURLUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,7 +222,7 @@
 		775F784D26DA68280039E447 /* Error */ = {
 			isa = PBXGroup;
 			children = (
-				775F784E26DA683C0039E447 /* DomainError.swift */,
+				775F784E26DA683C0039E447 /* FetchShortURLError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -363,7 +363,7 @@
 				775F780426D9B78F0039E447 /* ShortlyApp.swift in Sources */,
 				775F785326DA70180039E447 /* FetchAllShortURLUseCase.swift in Sources */,
 				775F784126D9C27B0039E447 /* ShortlyURLModel.swift in Sources */,
-				775F784F26DA683C0039E447 /* DomainError.swift in Sources */,
+				775F784F26DA683C0039E447 /* FetchShortURLError.swift in Sources */,
 				775F784426DA642D0039E447 /* FetchShortURLUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

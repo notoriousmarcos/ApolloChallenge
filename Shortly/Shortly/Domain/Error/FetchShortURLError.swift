@@ -1,5 +1,5 @@
 //
-//  DomainError.swift
+//  FetchShortURLError.swift
 //  Shortly
 //
 //  Created by marcos.brito on 28/08/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum DomainError: Int, Error {
+public enum FetchShortURLError: Int, Error {
     case emptyURL = 1
     case invalidURL = 2
     case rateLimitReached = 3
