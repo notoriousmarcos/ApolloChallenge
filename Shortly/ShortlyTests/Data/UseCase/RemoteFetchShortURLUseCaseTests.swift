@@ -12,7 +12,7 @@ class RemoteFetchShortURLUseCaseTests: XCTestCase {
 
     let url = URL(string: "https://api.shrtco.de/v2/shorten")!
     let urlModel = FetchShortURLUseCaseModel(url: "")
-    let mockClient = MockHTTPPostClient()
+    let mockClient = MockHTTPGetClient()
 
     func testRemoteFetchShortURLUseCase_executeWithValidData_ShouldReturnAValidShortURL() {
         // Arrange

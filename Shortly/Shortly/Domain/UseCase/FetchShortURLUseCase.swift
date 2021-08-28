@@ -9,7 +9,7 @@ import Foundation
 
 public protocol FetchShortURLUseCase {
     typealias Result = Swift.Result<ShortlyURLModel, FetchShortURLError>
-    func execute(_ fetchURLModel: FetchShortURLUseCaseModel, completion: @escaping (Result) -> Void)
+    func execute(_ model: FetchShortURLUseCaseModel, completion: @escaping (Result) -> Void)
 }
 
 public struct FetchShortURLUseCaseModel: Model {

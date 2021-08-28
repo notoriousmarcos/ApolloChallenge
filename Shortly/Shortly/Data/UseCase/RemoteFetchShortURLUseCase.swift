@@ -9,15 +9,15 @@ import Foundation
 
 public class RemoteFetchShortURLUseCase: FetchShortURLUseCase {
     private let url: URL
-    private let httpClient: HTTPPostClient
+    private let httpClient: HTTPGetClient
 
-    public init(url: URL, httpClient: HTTPPostClient) {
+    public init(url: URL, httpClient: HTTPGetClient) {
         self.url = url
         self.httpClient = httpClient
     }
 
-    public func execute(_ fetchURLModel: FetchShortURLUseCaseModel, completion: @escaping (FetchShortURLUseCase.Result) -> Void) {
-        httpClient.post(to: url, with: fetchURLModel.toData()) { [weak self] result in
+    public func execute(_ model: FetchShortURLUseCaseModel, completion: @escaping (FetchShortURLUseCase.Result) -> Void) {
+        httpClient.get(to: url, with: model.toData()) { [weak self] result in
             guard self != nil else { return completion(.failure(.unknown)) }
             switch result {
                 case .success(let data):

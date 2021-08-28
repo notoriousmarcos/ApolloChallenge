@@ -1,5 +1,5 @@
 //
-//  NativeHTTPPostClientTests.swift
+//  NativeHTTPGetClientTests.swift
 //  ShortlyTests
 //
 //  Created by marcos.brito on 28/08/21.
@@ -40,7 +40,7 @@ class MockURLProtocol: URLProtocol {
     }
 }
 
-class NativeHTTPPostClientTests: XCTestCase {
+class NativeHTTPGetClientTests: XCTestCase {
 
     let url = URL(string: "https://api.shrtco.de/v2/shorten")!
 
@@ -50,17 +50,17 @@ class NativeHTTPPostClientTests: XCTestCase {
         return URLSession(configuration: configuration)
     }()
 
-    func testNativeHTTPPostClient_init_ShouldRetainProperties() {
+    func testNativeHTTPGetClient_init_ShouldRetainProperties() {
         // Arrange
-        let sut = NativeHTTPPostClient(session: session)
+        let sut = NativeHTTPGetClient(session: session)
 
         // Assert
         XCTAssertNotNil(sut.session)
     }
 
-    func testNativeHTTPPostClient_makePostRequest_ShouldReturnASuccessPost() {
+    func testNativeHTTPGetClient_makeGetRequest_ShouldReturnASuccessGet() {
         // Arrange
-        let sut = NativeHTTPPostClient(session: session)
+        let sut = NativeHTTPGetClient(session: session)
         let validData = Data()
         let exp = expectation(description: "Waiting for Request")
 
@@ -68,7 +68,7 @@ class NativeHTTPPostClientTests: XCTestCase {
             return (HTTPURLResponse(), validData, nil)
         }
 
-        sut.post(to: url, with: validData) { result in
+        sut.get(to: url, with: validData) { result in
             switch result {
                 case .success(let data):
                     XCTAssertEqual(data, validData)
@@ -81,16 +81,16 @@ class NativeHTTPPostClientTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
 
-    func testNativeHTTPPostClient_makePostRequest_ShouldReturnUnauthorized() {
+    func testNativeHTTPGetClient_makeGetRequest_ShouldReturnUnauthorized() {
         // Arrange
-        let sut = NativeHTTPPostClient(session: session)
+        let sut = NativeHTTPGetClient(session: session)
         let exp = expectation(description: "Waiting for Request")
 
         MockURLProtocol.requestHandler = { request in
             return (self.createErrorResponseForRequest(request, code: 401), nil, nil)
         }
 
-        sut.post(to: url, with: nil) { result in
+        sut.get(to: url, with: nil) { result in
             switch result {
                 case .failure(let error):
                     XCTAssertEqual(error, .unauthorized)
@@ -103,9 +103,9 @@ class NativeHTTPPostClientTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
 
-    func testNativeHTTPPostClient_makeInvalidPostRequest_ShouldReturnUnknown() {
+    func testNativeHTTPGetClient_makeInvalidGetRequest_ShouldReturnUnknown() {
         // Arrange
-        let sut = NativeHTTPPostClient(session: session)
+        let sut = NativeHTTPGetClient(session: session)
         let validData = Data()
         let exp = expectation(description: "Waiting for Request")
 
@@ -113,7 +113,7 @@ class NativeHTTPPostClientTests: XCTestCase {
             return (self.createErrorResponseForRequest(request, code: -1), validData, nil)
         }
 
-        sut.post(to: url, with: validData) { result in
+        sut.get(to: url, with: validData) { result in
             switch result {
                 case .failure(let error):
                     XCTAssertEqual(error, .unknown)
