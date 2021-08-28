@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol SaveShortURLUseCase {
-    func execute(_ fetchURLModel: ShortlyURLModel, completion: @escaping (Bool) -> Void)
+    func execute(_ model: ShortlyURLModel, completion: @escaping (Bool) -> Void)
 }

@@ -39,6 +39,8 @@
 		775F787B26DA90950039E447 /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F787A26DA90950039E447 /* DatabaseError.swift */; };
 		775F787D26DA91E00039E447 /* FetchAllShortURLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F787C26DA91E00039E447 /* FetchAllShortURLError.swift */; };
 		775F787F26DA928F0039E447 /* DatabaseFetchAllShortURLUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F787E26DA928F0039E447 /* DatabaseFetchAllShortURLUseCase.swift */; };
+		775F788126DA93140039E447 /* DatabaseSaveShortURLUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F788026DA93140039E447 /* DatabaseSaveShortURLUseCaseTests.swift */; };
+		775F788326DA97820039E447 /* DatabaseSaveShortURLUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F788226DA97820039E447 /* DatabaseSaveShortURLUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,8 @@
 		775F787A26DA90950039E447 /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
 		775F787C26DA91E00039E447 /* FetchAllShortURLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllShortURLError.swift; sourceTree = "<group>"; };
 		775F787E26DA928F0039E447 /* DatabaseFetchAllShortURLUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFetchAllShortURLUseCase.swift; sourceTree = "<group>"; };
+		775F788026DA93140039E447 /* DatabaseSaveShortURLUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSaveShortURLUseCaseTests.swift; sourceTree = "<group>"; };
+		775F788226DA97820039E447 /* DatabaseSaveShortURLUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSaveShortURLUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +299,7 @@
 			children = (
 				775F785F26DA72E20039E447 /* RemoteFetchShortURLUseCaseTests.swift */,
 				775F787826DA8BFB0039E447 /* DatabaseFetchAllShortURLUseCaseTests.swift */,
+				775F788026DA93140039E447 /* DatabaseSaveShortURLUseCaseTests.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 			children = (
 				775F786726DA81760039E447 /* RemoteFetchShortURLUseCase.swift */,
 				775F787E26DA928F0039E447 /* DatabaseFetchAllShortURLUseCase.swift */,
+				775F788226DA97820039E447 /* DatabaseSaveShortURLUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -489,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				775F788326DA97820039E447 /* DatabaseSaveShortURLUseCase.swift in Sources */,
 				775F787D26DA91E00039E447 /* FetchAllShortURLError.swift in Sources */,
 				775F783D26D9BBE10039E447 /* Model.swift in Sources */,
 				775F785B26DA71DC0039E447 /* HTTPError.swift in Sources */,
@@ -517,6 +524,7 @@
 			files = (
 				775F787926DA8BFB0039E447 /* DatabaseFetchAllShortURLUseCaseTests.swift in Sources */,
 				775F781B26D9B7900039E447 /* ShortlyTests.swift in Sources */,
+				775F788126DA93140039E447 /* DatabaseSaveShortURLUseCaseTests.swift in Sources */,
 				775F784C26DA66700039E447 /* FetchShortURErrorTests.swift in Sources */,
 				775F786526DA75DA0039E447 /* MockHTTPPostClient.swift in Sources */,
 				775F784726DA65620039E447 /* FetchShortURLUseCaseModelTests.swift in Sources */,
