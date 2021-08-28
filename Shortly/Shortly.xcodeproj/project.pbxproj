@@ -21,12 +21,13 @@
 		775F784126D9C27B0039E447 /* ShortlyURLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F784026D9C27B0039E447 /* ShortlyURLModel.swift */; };
 		775F784426DA642D0039E447 /* FetchShortURLUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F784326DA642D0039E447 /* FetchShortURLUseCase.swift */; };
 		775F784726DA65620039E447 /* FetchShortURLUseCaseModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F784626DA65620039E447 /* FetchShortURLUseCaseModelTests.swift */; };
-		775F784C26DA66700039E447 /* DomainErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F784B26DA66700039E447 /* DomainErrorTests.swift */; };
+		775F784C26DA66700039E447 /* FetchShortURErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F784B26DA66700039E447 /* FetchShortURErrorTests.swift */; };
 		775F784F26DA683C0039E447 /* FetchShortURLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F784E26DA683C0039E447 /* FetchShortURLError.swift */; };
 		775F785326DA70180039E447 /* FetchAllShortURLUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F785226DA70180039E447 /* FetchAllShortURLUseCase.swift */; };
 		775F785926DA71650039E447 /* HTTPPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F785826DA71650039E447 /* HTTPPostClient.swift */; };
 		775F785B26DA71DC0039E447 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F785A26DA71DC0039E447 /* HTTPError.swift */; };
 		775F786026DA72E20039E447 /* RemoteFetchShortURLUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F785F26DA72E20039E447 /* RemoteFetchShortURLUseCaseTests.swift */; };
+		775F786526DA75DA0039E447 /* MockHTTPPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F786426DA75DA0039E447 /* MockHTTPPostClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,12 +68,13 @@
 		775F784026D9C27B0039E447 /* ShortlyURLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyURLModel.swift; sourceTree = "<group>"; };
 		775F784326DA642D0039E447 /* FetchShortURLUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShortURLUseCase.swift; sourceTree = "<group>"; };
 		775F784626DA65620039E447 /* FetchShortURLUseCaseModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShortURLUseCaseModelTests.swift; sourceTree = "<group>"; };
-		775F784B26DA66700039E447 /* DomainErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainErrorTests.swift; sourceTree = "<group>"; };
+		775F784B26DA66700039E447 /* FetchShortURErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShortURErrorTests.swift; sourceTree = "<group>"; };
 		775F784E26DA683C0039E447 /* FetchShortURLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShortURLError.swift; sourceTree = "<group>"; };
 		775F785226DA70180039E447 /* FetchAllShortURLUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllShortURLUseCase.swift; sourceTree = "<group>"; };
 		775F785826DA71650039E447 /* HTTPPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPPostClient.swift; sourceTree = "<group>"; };
 		775F785A26DA71DC0039E447 /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		775F785F26DA72E20039E447 /* RemoteFetchShortURLUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFetchShortURLUseCaseTests.swift; sourceTree = "<group>"; };
+		775F786426DA75DA0039E447 /* MockHTTPPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHTTPPostClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 		775F781926D9B7900039E447 /* ShortlyTests */ = {
 			isa = PBXGroup;
 			children = (
+				775F786126DA75AD0039E447 /* Mocks */,
 				775F783826D9BA4F0039E447 /* Domain */,
 				775F785626DA71210039E447 /* Data */,
 				775F781A26D9B7900039E447 /* ShortlyTests.swift */,
@@ -222,7 +225,7 @@
 		775F784826DA65E60039E447 /* Error */ = {
 			isa = PBXGroup;
 			children = (
-				775F784B26DA66700039E447 /* DomainErrorTests.swift */,
+				775F784B26DA66700039E447 /* FetchShortURErrorTests.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -264,6 +267,30 @@
 			isa = PBXGroup;
 			children = (
 				775F785F26DA72E20039E447 /* RemoteFetchShortURLUseCaseTests.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		775F786126DA75AD0039E447 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				775F786226DA75B50039E447 /* Data */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		775F786226DA75B50039E447 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				775F786326DA75BC0039E447 /* UseCase */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		775F786326DA75BC0039E447 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				775F786426DA75DA0039E447 /* MockHTTPPostClient.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -416,7 +443,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				775F781B26D9B7900039E447 /* ShortlyTests.swift in Sources */,
-				775F784C26DA66700039E447 /* DomainErrorTests.swift in Sources */,
+				775F784C26DA66700039E447 /* FetchShortURErrorTests.swift in Sources */,
+				775F786526DA75DA0039E447 /* MockHTTPPostClient.swift in Sources */,
 				775F784726DA65620039E447 /* FetchShortURLUseCaseModelTests.swift in Sources */,
 				775F786026DA72E20039E447 /* RemoteFetchShortURLUseCaseTests.swift in Sources */,
 				775F783B26D9BA760039E447 /* ModelTests.swift in Sources */,
