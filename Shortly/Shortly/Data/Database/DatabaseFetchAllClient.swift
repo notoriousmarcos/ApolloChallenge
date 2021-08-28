@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol DatabaseFetchAllClient {
+public protocol DatabaseFetchAllClient {
     typealias Result = Swift.Result<[ShortlyURLModel], DatabaseError>
     func fetchAll(completion: @escaping (Result) -> Void)
 }
