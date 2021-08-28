@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol FetchShortURLUseCase {
-    typealias Result = Swift.Result<ShortlyURLModel, Error>
+    typealias Result = Swift.Result<ShortlyURLModel, DomainError>
     func execute(_ fetchURLModel: FetchShortURLUseCaseModel, completion: @escaping (Result) -> Void)
 }
 
