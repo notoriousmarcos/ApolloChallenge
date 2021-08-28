@@ -43,6 +43,10 @@
 		775F788326DA97820039E447 /* DatabaseSaveShortURLUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F788226DA97820039E447 /* DatabaseSaveShortURLUseCase.swift */; };
 		775F788726DA98360039E447 /* NativeHTTPPostClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F788626DA98360039E447 /* NativeHTTPPostClientTests.swift */; };
 		775F788C26DAA74E0039E447 /* NativeHTTPPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F788B26DAA74E0039E447 /* NativeHTTPPostClient.swift */; };
+		775F788F26DAA8450039E447 /* CoreDataShortURLDatabaseSaveClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F788E26DAA8450039E447 /* CoreDataShortURLDatabaseSaveClientTests.swift */; };
+		775F789126DAC2AC0039E447 /* CoreDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789026DAC2AC0039E447 /* CoreDataStoreTests.swift */; };
+		775F789426DAC2E50039E447 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789326DAC2E50039E447 /* CoreDataStore.swift */; };
+		775F789626DAC3770039E447 /* ShortlyURLManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789526DAC3770039E447 /* ShortlyURLManagedObjectExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +109,10 @@
 		775F788226DA97820039E447 /* DatabaseSaveShortURLUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSaveShortURLUseCase.swift; sourceTree = "<group>"; };
 		775F788626DA98360039E447 /* NativeHTTPPostClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeHTTPPostClientTests.swift; sourceTree = "<group>"; };
 		775F788B26DAA74E0039E447 /* NativeHTTPPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeHTTPPostClient.swift; sourceTree = "<group>"; };
+		775F788E26DAA8450039E447 /* CoreDataShortURLDatabaseSaveClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataShortURLDatabaseSaveClientTests.swift; sourceTree = "<group>"; };
+		775F789026DAC2AC0039E447 /* CoreDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreTests.swift; sourceTree = "<group>"; };
+		775F789326DAC2E50039E447 /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		775F789526DAC3770039E447 /* ShortlyURLManagedObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyURLManagedObjectExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,6 +383,7 @@
 		775F788426DA97E90039E447 /* Infra */ = {
 			isa = PBXGroup;
 			children = (
+				775F788D26DAA80B0039E447 /* Database */,
 				775F788526DA97F40039E447 /* Network */,
 			);
 			path = Infra;
@@ -391,6 +400,7 @@
 		775F788826DAA7240039E447 /* Infra */ = {
 			isa = PBXGroup;
 			children = (
+				775F789226DAC2D40039E447 /* Database */,
 				775F788A26DAA73A0039E447 /* Network */,
 			);
 			path = Infra;
@@ -402,6 +412,24 @@
 				775F788B26DAA74E0039E447 /* NativeHTTPPostClient.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		775F788D26DAA80B0039E447 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				775F788E26DAA8450039E447 /* CoreDataShortURLDatabaseSaveClientTests.swift */,
+				775F789026DAC2AC0039E447 /* CoreDataStoreTests.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		775F789226DAC2D40039E447 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				775F789326DAC2E50039E447 /* CoreDataStore.swift */,
+				775F789526DAC3770039E447 /* ShortlyURLManagedObjectExtension.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -547,6 +575,7 @@
 				775F788C26DAA74E0039E447 /* NativeHTTPPostClient.swift in Sources */,
 				775F780626D9B78F0039E447 /* ContentView.swift in Sources */,
 				775F780426D9B78F0039E447 /* ShortlyApp.swift in Sources */,
+				775F789626DAC3770039E447 /* ShortlyURLManagedObjectExtension.swift in Sources */,
 				775F787226DA89B50039E447 /* DatabaseSaveClient.swift in Sources */,
 				775F787026DA89270039E447 /* DatabaseFetchAllClient.swift in Sources */,
 				775F785326DA70180039E447 /* FetchAllShortURLUseCase.swift in Sources */,
@@ -563,14 +592,17 @@
 			files = (
 				775F787926DA8BFB0039E447 /* DatabaseFetchAllShortURLUseCaseTests.swift in Sources */,
 				775F781B26D9B7900039E447 /* ShortlyTests.swift in Sources */,
+				775F789126DAC2AC0039E447 /* CoreDataStoreTests.swift in Sources */,
 				775F788126DA93140039E447 /* DatabaseSaveShortURLUseCaseTests.swift in Sources */,
 				775F784C26DA66700039E447 /* FetchShortURErrorTests.swift in Sources */,
 				775F786526DA75DA0039E447 /* MockHTTPPostClient.swift in Sources */,
 				775F784726DA65620039E447 /* FetchShortURLUseCaseModelTests.swift in Sources */,
 				775F787726DA8B240039E447 /* MockShortURLDatabaseFetchAllClient.swift in Sources */,
 				775F787526DA8A540039E447 /* MockShortURLDatabaseSaveClient.swift in Sources */,
+				775F789426DAC2E50039E447 /* CoreDataStore.swift in Sources */,
 				775F786026DA72E20039E447 /* RemoteFetchShortURLUseCaseTests.swift in Sources */,
 				775F788726DA98360039E447 /* NativeHTTPPostClientTests.swift in Sources */,
+				775F788F26DAA8450039E447 /* CoreDataShortURLDatabaseSaveClientTests.swift in Sources */,
 				775F783B26D9BA760039E447 /* ModelTests.swift in Sources */,
 				775F783F26D9BF140039E447 /* ShortlyURLModelTests.swift in Sources */,
 			);

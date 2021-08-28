@@ -22,20 +22,20 @@ class DatabaseSaveShortURLUseCaseTests: XCTestCase {
 
     func testDatabaseSaveShortURLUseCase_executeWithValidData_ShouldReturnSuccess() {
         // Arrange
-        mockClient.result = .success(true)
+        mockClient.result = true
         let sut = DatabaseSaveShortURLUseCase(databaseClient: mockClient)
 
         // Act
         sut.execute(validShortURLModel) { [weak self] success in
             // Assert
             XCTAssertTrue(success)
-            XCTAssertEqual(self?.mockClient.savadeModel, self?.validShortURLModel)
+            XCTAssertEqual(self?.mockClient.savedModel, self?.validShortURLModel)
         }
     }
 
     func testDatabaseSaveShortURLUseCase_executeWithFail_ShouldReturnFail() {
         // Arrange
-        mockClient.result = .failure(.unknown)
+        mockClient.result = false
         let sut = DatabaseSaveShortURLUseCase(databaseClient: mockClient)
 
         // Act

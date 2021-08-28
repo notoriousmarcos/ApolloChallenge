@@ -8,6 +8,5 @@
 import Foundation
 
 public protocol DatabaseSaveClient {
-    typealias Result = Swift.Result<Bool, DatabaseError>
-    func save(model: ShortlyURLModel, completion: @escaping (Result) -> Void)
+    func save(model: ShortlyURLModel, completion: @escaping (Bool) -> Void)
 }

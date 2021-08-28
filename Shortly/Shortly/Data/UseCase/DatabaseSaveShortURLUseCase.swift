@@ -17,12 +17,7 @@ public class DatabaseSaveShortURLUseCase: SaveShortURLUseCase {
 
     public func execute(_ model: ShortlyURLModel, completion: @escaping (Bool) -> Void) {
         databaseClient.save(model: model) { result in
-            switch result {
-                case .success(let bool):
-                    completion(bool)
-                case .failure:
-                    completion(false)
-            }
+            completion(result)
         }
     }
 }
