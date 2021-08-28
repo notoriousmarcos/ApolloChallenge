@@ -31,6 +31,10 @@
 		775F786826DA81760039E447 /* RemoteFetchShortURLUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F786726DA81760039E447 /* RemoteFetchShortURLUseCase.swift */; };
 		775F786B26DA81A50039E447 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F786A26DA81A50039E447 /* DataExtension.swift */; };
 		775F786D26DA87560039E447 /* SaveShortURLUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F786C26DA87560039E447 /* SaveShortURLUseCase.swift */; };
+		775F787026DA89270039E447 /* DatabaseFetchAllClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F786F26DA89270039E447 /* DatabaseFetchAllClient.swift */; };
+		775F787226DA89B50039E447 /* DatabaseSaveClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F787126DA89B50039E447 /* DatabaseSaveClient.swift */; };
+		775F787526DA8A540039E447 /* MockShortURLDatabaseSaveClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F787426DA8A540039E447 /* MockShortURLDatabaseSaveClient.swift */; };
+		775F787726DA8B240039E447 /* MockShortURLDatabaseFetchAllClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F787626DA8B240039E447 /* MockShortURLDatabaseFetchAllClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +85,10 @@
 		775F786726DA81760039E447 /* RemoteFetchShortURLUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFetchShortURLUseCase.swift; sourceTree = "<group>"; };
 		775F786A26DA81A50039E447 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		775F786C26DA87560039E447 /* SaveShortURLUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveShortURLUseCase.swift; sourceTree = "<group>"; };
+		775F786F26DA89270039E447 /* DatabaseFetchAllClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFetchAllClient.swift; sourceTree = "<group>"; };
+		775F787126DA89B50039E447 /* DatabaseSaveClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSaveClient.swift; sourceTree = "<group>"; };
+		775F787426DA8A540039E447 /* MockShortURLDatabaseSaveClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockShortURLDatabaseSaveClient.swift; sourceTree = "<group>"; };
+		775F787626DA8B240039E447 /* MockShortURLDatabaseFetchAllClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockShortURLDatabaseFetchAllClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +256,7 @@
 		775F785426DA70EC0039E447 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				775F786E26DA88DB0039E447 /* Database */,
 				775F786926DA81900039E447 /* Helper */,
 				775F786626DA81640039E447 /* UseCase */,
 				775F785526DA71130039E447 /* Network */,
@@ -291,17 +300,18 @@
 		775F786226DA75B50039E447 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				775F786326DA75BC0039E447 /* UseCase */,
+				775F787326DA8A380039E447 /* Database */,
+				775F786326DA75BC0039E447 /* Network */,
 			);
 			path = Data;
 			sourceTree = "<group>";
 		};
-		775F786326DA75BC0039E447 /* UseCase */ = {
+		775F786326DA75BC0039E447 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				775F786426DA75DA0039E447 /* MockHTTPPostClient.swift */,
 			);
-			path = UseCase;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		775F786626DA81640039E447 /* UseCase */ = {
@@ -318,6 +328,24 @@
 				775F786A26DA81A50039E447 /* DataExtension.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		775F786E26DA88DB0039E447 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				775F787126DA89B50039E447 /* DatabaseSaveClient.swift */,
+				775F786F26DA89270039E447 /* DatabaseFetchAllClient.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		775F787326DA8A380039E447 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				775F787626DA8B240039E447 /* MockShortURLDatabaseFetchAllClient.swift */,
+				775F787426DA8A540039E447 /* MockShortURLDatabaseSaveClient.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -459,6 +487,8 @@
 				775F786D26DA87560039E447 /* SaveShortURLUseCase.swift in Sources */,
 				775F780626D9B78F0039E447 /* ContentView.swift in Sources */,
 				775F780426D9B78F0039E447 /* ShortlyApp.swift in Sources */,
+				775F787226DA89B50039E447 /* DatabaseSaveClient.swift in Sources */,
+				775F787026DA89270039E447 /* DatabaseFetchAllClient.swift in Sources */,
 				775F785326DA70180039E447 /* FetchAllShortURLUseCase.swift in Sources */,
 				775F784126D9C27B0039E447 /* ShortlyURLModel.swift in Sources */,
 				775F784F26DA683C0039E447 /* FetchShortURLError.swift in Sources */,
@@ -474,6 +504,8 @@
 				775F784C26DA66700039E447 /* FetchShortURErrorTests.swift in Sources */,
 				775F786526DA75DA0039E447 /* MockHTTPPostClient.swift in Sources */,
 				775F784726DA65620039E447 /* FetchShortURLUseCaseModelTests.swift in Sources */,
+				775F787726DA8B240039E447 /* MockShortURLDatabaseFetchAllClient.swift in Sources */,
+				775F787526DA8A540039E447 /* MockShortURLDatabaseSaveClient.swift in Sources */,
 				775F786026DA72E20039E447 /* RemoteFetchShortURLUseCaseTests.swift in Sources */,
 				775F783B26D9BA760039E447 /* ModelTests.swift in Sources */,
 				775F783F26D9BF140039E447 /* ShortlyURLModelTests.swift in Sources */,
