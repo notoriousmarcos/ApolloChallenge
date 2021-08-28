@@ -40,41 +40,6 @@ class MockURLProtocol: URLProtocol {
     }
 }
 
-class NativeHTTPPostClient: HTTPPostClient {
-
-    let session: URLSession
-
-    init(session: URLSession = .shared) {
-        self.session = session
-    }
-
-    func post(to url: URL, with data: Data?, completion: @escaping (HTTPPostClient.Result) -> Void) {
-        let task = session.dataTask(with: makeRequest(url, data: data)) { data, response, error in
-            guard let httpResponse = response as? HTTPURLResponse else {
-                return completion(.failure(.badRequest))
-            }
-
-            guard (200...299).contains(httpResponse.statusCode) else {
-                let error = HTTPError(rawValue: httpResponse.statusCode) ?? .unknown
-                return completion(.failure(error))
-            }
-
-            completion(.success(data))
-        }
-
-        task.resume()
-
-    }
-
-    func makeRequest(_ url: URL, data: Data?) -> URLRequest {
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = data
-
-        return request
-    }
-}
-
 class NativeHTTPPostClientTests: XCTestCase {
 
     let url = URL(string: "https://api.shrtco.de/v2/shorten")!
