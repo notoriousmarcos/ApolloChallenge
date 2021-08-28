@@ -45,7 +45,7 @@ class RemoteFetchShortURLUseCaseTests: XCTestCase {
     let url = URL(string: "https://api.shrtco.de/v2/shorten")!
     let mockClient = MockHTTPPostClient()
 
-    func testRemoteFetchShortURLUseCase_execute_ShouldReturnAValidShortURL() {
+    func testRemoteFetchShortURLUseCase_executeWithValidData_ShouldReturnAValidShortURL() {
         // Arrange
         mockClient.result = .success(MockResponses.validShortURLModel.toData())
         let sut = RemoteFetchShortURLUseCase(url: url, httpClient: mockClient)
@@ -58,7 +58,22 @@ class RemoteFetchShortURLUseCaseTests: XCTestCase {
             } else {
                 XCTFail("Should receive a valid response")
             }
+        }
+    }
 
+    func testRemoteFetchShortURLUseCase_executeWithInvalidData_ShouldReturnUnknownError() {
+        // Arrange
+        mockClient.result = .success(nil)
+        let sut = RemoteFetchShortURLUseCase(url: url, httpClient: mockClient)
+
+        // Act
+        sut.execute(FetchShortURLUseCaseModel(url: "http://example.org/very/long/link.html")) { result in
+            // Assert
+            if case let .failure(error) = result {
+                XCTAssertEqual(error, .unknown)
+            } else {
+                XCTFail("Should receive a unknown error")
+            }
         }
     }
 
