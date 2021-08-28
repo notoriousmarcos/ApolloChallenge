@@ -10,7 +10,7 @@ import XCTest
 
 class MockURLProtocol: URLProtocol {
 
-    static var requestHandler: ((URLRequest) -> (HTTPURLResponse, Data?, Error?))?
+    static var requestHandler: ((URLRequest) -> (URLResponse, Data?, Error?))?
 
     override class func canInit(with request: URLRequest) -> Bool {
         return true
@@ -116,20 +116,19 @@ class NativeHTTPPostClientTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
 
-    func testNativeHTTPPostClient_makePostRequest_ShouldReturnABadRequest() {
+    func testNativeHTTPPostClient_makePostRequest_ShouldReturnUnauthorized() {
         // Arrange
         let sut = NativeHTTPPostClient(session: session)
-        let validData = Data()
         let exp = expectation(description: "Waiting for Request")
 
         MockURLProtocol.requestHandler = { request in
-            return (self.createErrorResponseForRequest(request, code: 400), validData, nil)
+            return (self.createErrorResponseForRequest(request, code: 401), nil, nil)
         }
 
-        sut.post(to: url, with: validData) { result in
+        sut.post(to: url, with: nil) { result in
             switch result {
                 case .failure(let error):
-                    XCTAssertEqual(error, .badRequest)
+                    XCTAssertEqual(error, .unauthorized)
                 case .success:
                     XCTFail("Should return an Error")
             }
@@ -139,7 +138,30 @@ class NativeHTTPPostClientTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
 
-    private func createErrorResponseForRequest(_ request: URLRequest, code: Int) -> HTTPURLResponse {
+    func testNativeHTTPPostClient_makeInvalidPostRequest_ShouldReturnUnknown() {
+        // Arrange
+        let sut = NativeHTTPPostClient(session: session)
+        let validData = Data()
+        let exp = expectation(description: "Waiting for Request")
+
+        MockURLProtocol.requestHandler = { request in
+            return (self.createErrorResponseForRequest(request, code: -1), validData, nil)
+        }
+
+        sut.post(to: url, with: validData) { result in
+            switch result {
+                case .failure(let error):
+                    XCTAssertEqual(error, .unknown)
+                case .success:
+                    XCTFail("Should return an Error")
+            }
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 1)
+    }
+
+    private func createErrorResponseForRequest(_ request: URLRequest, code: Int) -> URLResponse {
         HTTPURLResponse(url: request.url!,
                         statusCode: code,
                         httpVersion: nil,
