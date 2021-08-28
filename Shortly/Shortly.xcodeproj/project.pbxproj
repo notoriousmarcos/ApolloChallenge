@@ -19,6 +19,8 @@
 		775F783D26D9BBE10039E447 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F783C26D9BBE10039E447 /* Model.swift */; };
 		775F783F26D9BF140039E447 /* ShortlyURLModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F783E26D9BF140039E447 /* ShortlyURLModelTests.swift */; };
 		775F784126D9C27B0039E447 /* ShortlyURLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F784026D9C27B0039E447 /* ShortlyURLModel.swift */; };
+		775F784426DA642D0039E447 /* FetchShortURLUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F784326DA642D0039E447 /* FetchShortURLUseCase.swift */; };
+		775F784726DA65620039E447 /* FetchShortURLUseCaseModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F784626DA65620039E447 /* FetchShortURLUseCaseModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		775F783C26D9BBE10039E447 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		775F783E26D9BF140039E447 /* ShortlyURLModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyURLModelTests.swift; sourceTree = "<group>"; };
 		775F784026D9C27B0039E447 /* ShortlyURLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyURLModel.swift; sourceTree = "<group>"; };
+		775F784326DA642D0039E447 /* FetchShortURLUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShortURLUseCase.swift; sourceTree = "<group>"; };
+		775F784626DA65620039E447 /* FetchShortURLUseCaseModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShortURLUseCaseModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,7 @@
 		775F783626D9B9DD0039E447 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				775F784226DA64050039E447 /* UseCase */,
 				775F783726D9BA350039E447 /* Model */,
 			);
 			path = Domain;
@@ -166,6 +171,8 @@
 		775F783826D9BA4F0039E447 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				775F784826DA65E60039E447 /* Errors */,
+				775F784526DA64360039E447 /* UseCase */,
 				775F783926D9BA570039E447 /* Model */,
 			);
 			path = Domain;
@@ -178,6 +185,29 @@
 				775F783E26D9BF140039E447 /* ShortlyURLModelTests.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		775F784226DA64050039E447 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				775F784326DA642D0039E447 /* FetchShortURLUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		775F784526DA64360039E447 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				775F784626DA65620039E447 /* FetchShortURLUseCaseModelTests.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		775F784826DA65E60039E447 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +345,7 @@
 				775F780626D9B78F0039E447 /* ContentView.swift in Sources */,
 				775F780426D9B78F0039E447 /* ShortlyApp.swift in Sources */,
 				775F784126D9C27B0039E447 /* ShortlyURLModel.swift in Sources */,
+				775F784426DA642D0039E447 /* FetchShortURLUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				775F781B26D9B7900039E447 /* ShortlyTests.swift in Sources */,
+				775F784726DA65620039E447 /* FetchShortURLUseCaseModelTests.swift in Sources */,
 				775F783B26D9BA760039E447 /* ModelTests.swift in Sources */,
 				775F783F26D9BF140039E447 /* ShortlyURLModelTests.swift in Sources */,
 			);
