@@ -28,14 +28,24 @@ public class RemoteFetchShortURLUseCase: FetchShortURLUseCase {
             guard self != nil else { return }
             switch result {
                 case .success(let data):
-                    if let model: ShortlyURLModel = data?.toModel() {
-                        completion(.success(model))
-                    } else {
-                        completion(.failure(.unknown))
+                    guard let model: FetchShortURLUseResponse = data?.toModel() else {
+                        return completion(.failure(.unknown))
                     }
-                case .failure(let error):
-                    completion(.failure(FetchShortURLError.unknown))
+
+                    self?.parseResponseToResult(model, completion: completion)
+                case .failure:
+                    completion(.failure(.unknown))
             }
+        }
+    }
+
+    private func parseResponseToResult(_ response: FetchShortURLUseResponse, completion: @escaping (FetchShortURLUseCase.Result) -> Void) {
+        if response.ok, let shortURL = response.result  {
+            completion(.success(shortURL))
+        } else if let error = response.error_code {
+            completion(.failure(FetchShortURLError(rawValue: error) ?? .unknown))
+        } else {
+            completion(.failure(.unknown))
         }
     }
 }
@@ -47,7 +57,7 @@ class RemoteFetchShortURLUseCaseTests: XCTestCase {
 
     func testRemoteFetchShortURLUseCase_executeWithValidData_ShouldReturnAValidShortURL() {
         // Arrange
-        mockClient.result = .success(MockResponses.validShortURLModel.toData())
+        mockClient.result = .success(MockResponses.validFetchShortURLUseResponse.toData())
         let sut = RemoteFetchShortURLUseCase(url: url, httpClient: mockClient)
 
         // Act
@@ -63,7 +73,7 @@ class RemoteFetchShortURLUseCaseTests: XCTestCase {
 
     func testRemoteFetchShortURLUseCase_executeWithInvalidData_ShouldReturnUnknownError() {
         // Arrange
-        mockClient.result = .success(nil)
+        mockClient.result = .success(MockResponses.validFetchShortURLUseResponseWithEmptyData.toData())
         let sut = RemoteFetchShortURLUseCase(url: url, httpClient: mockClient)
 
         // Act
@@ -71,6 +81,22 @@ class RemoteFetchShortURLUseCaseTests: XCTestCase {
             // Assert
             if case let .failure(error) = result {
                 XCTAssertEqual(error, .unknown)
+            } else {
+                XCTFail("Should receive a unknown error")
+            }
+        }
+    }
+
+    func testRemoteFetchShortURLUseCase_executeWithEmptyURL_ShouldReturnEmptyURL() {
+        // Arrange
+        mockClient.result = .success(MockResponses.validFetchShortURLUseResponseWithEmptyURL.toData())
+        let sut = RemoteFetchShortURLUseCase(url: url, httpClient: mockClient)
+
+        // Act
+        sut.execute(FetchShortURLUseCaseModel(url: "")) { result in
+            // Assert
+            if case let .failure(error) = result {
+                XCTAssertEqual(error, .emptyURL)
             } else {
                 XCTFail("Should receive a unknown error")
             }
@@ -86,5 +112,20 @@ class RemoteFetchShortURLUseCaseTests: XCTestCase {
                                                         shareLink: "shrtco.de/share/KCveN",
                                                         fullShareLink: "https://shrtco.de/share/KCveN",
                                                         originalLink: "http://example.org/very/long/link.html")
+
+        static let validFetchShortURLUseResponse = FetchShortURLUseResponse(ok: true,
+                                                                            error_code: nil,
+                                                                            error: nil,
+                                                                            result: validShortURLModel)
+
+        static let validFetchShortURLUseResponseWithEmptyData = FetchShortURLUseResponse(ok: true,
+                                                                            error_code: nil,
+                                                                            error: nil,
+                                                                            result: nil)
+
+        static let validFetchShortURLUseResponseWithEmptyURL = FetchShortURLUseResponse(ok: true,
+                                                                                         error_code: 1,
+                                                                                         error: "EmptyURL",
+                                                                                         result: nil)
     }
 }

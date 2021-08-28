@@ -19,3 +19,10 @@ public struct FetchShortURLUseCaseModel: Model {
         self.url = url
     }
 }
+
+public struct FetchShortURLUseResponse: Model {
+    public let ok: Bool
+    public let error_code: Int?
+    public let error: String?
+    public let result: ShortlyURLModel?
+}
