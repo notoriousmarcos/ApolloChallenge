@@ -47,6 +47,7 @@
 		775F789126DAC2AC0039E447 /* CoreDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789026DAC2AC0039E447 /* CoreDataStoreTests.swift */; };
 		775F789426DAC2E50039E447 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789326DAC2E50039E447 /* CoreDataStore.swift */; };
 		775F789626DAC3770039E447 /* ShortlyURLManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789526DAC3770039E447 /* ShortlyURLManagedObjectExtension.swift */; };
+		775F789826DACB270039E447 /* CoreDataShortURLDatabaseSaveClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789726DACB270039E447 /* CoreDataShortURLDatabaseSaveClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		775F789026DAC2AC0039E447 /* CoreDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreTests.swift; sourceTree = "<group>"; };
 		775F789326DAC2E50039E447 /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		775F789526DAC3770039E447 /* ShortlyURLManagedObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyURLManagedObjectExtension.swift; sourceTree = "<group>"; };
+		775F789726DACB270039E447 /* CoreDataShortURLDatabaseSaveClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataShortURLDatabaseSaveClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,6 +430,7 @@
 			children = (
 				775F789326DAC2E50039E447 /* CoreDataStore.swift */,
 				775F789526DAC3770039E447 /* ShortlyURLManagedObjectExtension.swift */,
+				775F789726DACB270039E447 /* CoreDataShortURLDatabaseSaveClient.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				775F787F26DA928F0039E447 /* DatabaseFetchAllShortURLUseCase.swift in Sources */,
 				775F784126D9C27B0039E447 /* ShortlyURLModel.swift in Sources */,
 				775F784F26DA683C0039E447 /* FetchShortURLError.swift in Sources */,
+				775F789826DACB270039E447 /* CoreDataShortURLDatabaseSaveClient.swift in Sources */,
 				775F784426DA642D0039E447 /* FetchShortURLUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -27,7 +27,7 @@ class CoreDataStoreTests: XCTestCase {
         let shortlyURL = ShortlyURLManagedObject(context: context)
         shortlyURL.setupWithShortlyModel(validShortURLModel)
         try! context.save()
-        waitForExpectations(timeout: 2.0) { error in
+        waitForExpectations(timeout: 1) { error in
             XCTAssertNil(error, "Save did not occur")
         }
 

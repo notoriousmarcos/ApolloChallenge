@@ -9,26 +9,6 @@ import XCTest
 import CoreData
 @testable import Shortly
 
-public class CoreDataShortURLDatabaseSaveClient: DatabaseSaveClient {
-
-    public let context: NSManagedObjectContext
-
-    public init(context: NSManagedObjectContext) {
-        self.context = context
-    }
-
-    public func save(model: ShortlyURLModel, completion: @escaping (Bool) -> Void) {
-        let shortlyURL = ShortlyURLManagedObject(context: context)
-        shortlyURL.setupWithShortlyModel(model)
-        do {
-            try context.save()
-            completion(true)
-        } catch {
-            completion(false)
-        }
-    }
-}
-
 class CoreDataShortURLDatabaseSaveClientTests: XCTestCase {
 
     let validShortURLModel = ShortlyURLModel(code: "KCveN",
@@ -54,7 +34,7 @@ class CoreDataShortURLDatabaseSaveClientTests: XCTestCase {
             XCTAssertTrue(success)
         }
 
-        waitForExpectations(timeout: 2.0) { error in
+        waitForExpectations(timeout: 1) { error in
             XCTAssertNil(error, "Save did not occur")
         }
 
@@ -71,7 +51,6 @@ class CoreDataShortURLDatabaseSaveClientTests: XCTestCase {
         XCTAssertEqual(finalShortlyURL?.share_link, validShortURLModel.shareLink)
         XCTAssertEqual(finalShortlyURL?.full_share_link, validShortURLModel.fullShareLink)
         XCTAssertEqual(finalShortlyURL?.original_link, validShortURLModel.originalLink)
-        
     }
 
 }
