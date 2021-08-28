@@ -10,7 +10,7 @@ import XCTest
 
 class ModelTests: XCTestCase {
 
-    func testModel_codable_ShouldEncodeAndDecodeItem() throws {
+    func testModel_codable_ShouldEncodeAndDecodeMockModel() throws {
         // Arrange
         let sut = MockModel(value: "string")
         let decoder = JSONDecoder()
