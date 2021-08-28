@@ -10,9 +10,9 @@ import XCTest
 @testable import Shortly
 
 class MockShortURLDatabaseFetchAllClient: DatabaseFetchAllClient {
-    var result: [ShortlyURLModel]?
+    var result: DatabaseFetchAllClient.Result?
 
-    func fetchAll(completion: @escaping ([ShortlyURLModel]) -> Void) {
+    func fetchAll(completion: @escaping (DatabaseFetchAllClient.Result) -> Void) {
         guard let result = result else {
             return XCTFail("Result Should not be nil")
         }

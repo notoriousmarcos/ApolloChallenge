@@ -8,6 +8,7 @@
 import Foundation
 
 protocol DatabaseSaveClient {
+    typealias Result = Swift.Result<Bool, DatabaseError>
     associatedtype T
-    func save(model: T, completion: @escaping (Bool) -> Void)
+    func save(model: T, completion: @escaping (Result) -> Void)
 }

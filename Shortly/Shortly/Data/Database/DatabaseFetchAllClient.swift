@@ -8,6 +8,6 @@
 import Foundation
 
 protocol DatabaseFetchAllClient {
-    associatedtype T
-    func fetchAll(completion: @escaping (T) -> Void)
+    typealias Result = Swift.Result<[ShortlyURLModel], DatabaseError>
+    func fetchAll(completion: @escaping (Result) -> Void)
 }

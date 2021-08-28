@@ -10,9 +10,9 @@ import XCTest
 @testable import Shortly
 
 class MockShortURLDatabaseSaveClient: DatabaseSaveClient {
-    var result: Bool?
+    var result: DatabaseSaveClient.Result?
 
-    func save(model: ShortlyURLModel, completion: @escaping (Bool) -> Void) {
+    func save(model: ShortlyURLModel, completion: @escaping (DatabaseSaveClient.Result) -> Void) {
         guard let result = result else {
             return XCTFail("Result Should not be nil")
         }

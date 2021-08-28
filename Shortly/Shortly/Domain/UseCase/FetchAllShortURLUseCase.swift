@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol FetchAllShortURLUseCase {
-    typealias Result = Swift.Result<[ShortlyURLModel], Error>
+    typealias Result = Swift.Result<[ShortlyURLModel], FetchAllShortURLError>
     func execute(completion: @escaping (Result) -> Void)
 }
