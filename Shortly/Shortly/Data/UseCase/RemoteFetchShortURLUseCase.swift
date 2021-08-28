@@ -18,7 +18,7 @@ public class RemoteFetchShortURLUseCase: FetchShortURLUseCase {
 
     public func execute(_ fetchURLModel: FetchShortURLUseCaseModel, completion: @escaping (FetchShortURLUseCase.Result) -> Void) {
         httpClient.post(to: url, with: fetchURLModel.toData()) { [weak self] result in
-            guard self != nil else { return }
+            guard self != nil else { return completion(.failure(.unknown)) }
             switch result {
                 case .success(let data):
                     guard let model: FetchShortURLUseResponse = data?.toModel() else {

@@ -29,6 +29,22 @@ class RemoteFetchShortURLUseCaseTests: XCTestCase {
         }
     }
 
+    func testRemoteFetchShortURLUseCase_executeWithNilData_ShouldReturnUnknownError() {
+        // Arrange
+        mockClient.result = .success(nil)
+        let sut = RemoteFetchShortURLUseCase(url: url, httpClient: mockClient)
+
+        // Act
+        sut.execute(FetchShortURLUseCaseModel(url: "http://example.org/very/long/link.html")) { result in
+            // Assert
+            if case let .failure(error) = result {
+                XCTAssertEqual(error, .unknown)
+            } else {
+                XCTFail("Should receive a unknown error")
+            }
+        }
+    }
+
     func testRemoteFetchShortURLUseCase_executeWithInvalidData_ShouldReturnUnknownError() {
         // Arrange
         mockClient.result = .success(MockResponses.validFetchShortURLUseResponseWithEmptyData.toData())
