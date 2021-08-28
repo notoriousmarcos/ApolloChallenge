@@ -28,6 +28,8 @@
 		775F785B26DA71DC0039E447 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F785A26DA71DC0039E447 /* HTTPError.swift */; };
 		775F786026DA72E20039E447 /* RemoteFetchShortURLUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F785F26DA72E20039E447 /* RemoteFetchShortURLUseCaseTests.swift */; };
 		775F786526DA75DA0039E447 /* MockHTTPPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F786426DA75DA0039E447 /* MockHTTPPostClient.swift */; };
+		775F786826DA81760039E447 /* RemoteFetchShortURLUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F786726DA81760039E447 /* RemoteFetchShortURLUseCase.swift */; };
+		775F786B26DA81A50039E447 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F786A26DA81A50039E447 /* DataExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		775F785A26DA71DC0039E447 /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		775F785F26DA72E20039E447 /* RemoteFetchShortURLUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFetchShortURLUseCaseTests.swift; sourceTree = "<group>"; };
 		775F786426DA75DA0039E447 /* MockHTTPPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHTTPPostClient.swift; sourceTree = "<group>"; };
+		775F786726DA81760039E447 /* RemoteFetchShortURLUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFetchShortURLUseCase.swift; sourceTree = "<group>"; };
+		775F786A26DA81A50039E447 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +245,8 @@
 		775F785426DA70EC0039E447 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				775F786926DA81900039E447 /* Helper */,
+				775F786626DA81640039E447 /* UseCase */,
 				775F785526DA71130039E447 /* Network */,
 			);
 			path = Data;
@@ -293,6 +299,22 @@
 				775F786426DA75DA0039E447 /* MockHTTPPostClient.swift */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		775F786626DA81640039E447 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				775F786726DA81760039E447 /* RemoteFetchShortURLUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		775F786926DA81900039E447 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				775F786A26DA81A50039E447 /* DataExtension.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,9 +448,11 @@
 			files = (
 				775F783D26D9BBE10039E447 /* Model.swift in Sources */,
 				775F785B26DA71DC0039E447 /* HTTPError.swift in Sources */,
+				775F786826DA81760039E447 /* RemoteFetchShortURLUseCase.swift in Sources */,
 				775F780D26D9B7900039E447 /* Persistence.swift in Sources */,
 				775F785926DA71650039E447 /* HTTPPostClient.swift in Sources */,
 				775F781026D9B7900039E447 /* Shortly.xcdatamodeld in Sources */,
+				775F786B26DA81A50039E447 /* DataExtension.swift in Sources */,
 				775F780626D9B78F0039E447 /* ContentView.swift in Sources */,
 				775F780426D9B78F0039E447 /* ShortlyApp.swift in Sources */,
 				775F785326DA70180039E447 /* FetchAllShortURLUseCase.swift in Sources */,
