@@ -12,19 +12,39 @@ import Combine
 class ShortlyViewModel: ObservableObject, ShortlyViewModelProtocol {
 
     @Published public var shortlyURLViewModels: [ShortlyURLViewModel] = []
+    @Published public var isGeneratingURL: Bool = false
 
     private var shortURLs: [ShortlyURLModel] = []
     private var fetchAllURLs: FetchAllAction
+    private var saveURL: SaveAction
+    private var fetchURL: FetchAction
     private var removeURL: RemoveAction
 
     init(fetchAllURLs: @escaping FetchAllAction,
+         saveURL: @escaping SaveAction,
+         fetchURL: @escaping FetchAction,
          removeURL: @escaping RemoveAction) {
         self.fetchAllURLs = fetchAllURLs
+        self.saveURL = saveURL
+        self.fetchURL = fetchURL
         self.removeURL = removeURL
     }
 
     public func onAppear() {
         self.getAllURLs()
+    }
+
+    func createURL(_ urlString: String) {
+        isGeneratingURL = true
+        let model = FetchShortURLUseCaseModel(url: urlString)
+        fetchURL(model) { [weak self] url in
+            self?.saveURL(url) { [weak self] success in
+                if success {
+                    self?.getAllURLs()
+                    isGeneratingURL = false
+                }
+            }
+        }
     }
 
     func deleteURL(_ viewModel: ShortlyURLViewModel) {
@@ -52,9 +72,12 @@ class ShortlyViewModel: ObservableObject, ShortlyViewModelProtocol {
 
 protocol ShortlyViewModelProtocol {
     typealias RemoveAction = (ShortlyURLModel, (Bool) -> Void) -> Void
+    typealias SaveAction = (ShortlyURLModel, (Bool) -> Void) -> Void
+    typealias FetchAction = (FetchShortURLUseCaseModel, (ShortlyURLModel) -> Void) -> Void
     typealias FetchAllAction = (([ShortlyURLModel]) -> Void) -> Void
 
     func onAppear()
+    func createURL(_ urlString: String)
     func deleteURL(_ model: ShortlyURLViewModel)
 }
 
@@ -65,17 +88,21 @@ class ShortlyViewModelTests: XCTestCase {
     func testShortlyViewModel_fetchAll_shouldReturnAllURLsToView() {
 
         var fetchAllCalledCount = 0
-        let sut = ShortlyViewModel(fetchAllURLs: { completion in
-            fetchAllCalledCount += 1
-            completion([ShortlyURLModel(code: "KCveN",
-                                        shortLink: "shrtco.de/KCveN",
-                                        fullShortLink: "https://shrtco.de/KCveN",
-                                        shortLink2: "9qr.de/KCveN",
-                                        fullShortLink2: "https://9qr.de/KCveN",
-                                        shareLink: "shrtco.de/share/KCveN",
-                                        fullShareLink: "https://shrtco.de/share/KCveN",
-                                        originalLink: "http://example.org/very/long/link.html")])
-        }, removeURL: { _,_  in })
+        let sut = ShortlyViewModel(
+            fetchAllURLs: { completion in
+                fetchAllCalledCount += 1
+                completion([ShortlyURLModel(code: "KCveN",
+                                            shortLink: "shrtco.de/KCveN",
+                                            fullShortLink: "https://shrtco.de/KCveN",
+                                            shortLink2: "9qr.de/KCveN",
+                                            fullShortLink2: "https://9qr.de/KCveN",
+                                            shareLink: "shrtco.de/share/KCveN",
+                                            fullShareLink: "https://shrtco.de/share/KCveN",
+                                            originalLink: "http://example.org/very/long/link.html")])
+            },
+            saveURL: { _,_  in },
+            fetchURL: { _,_  in },
+            removeURL: { _,_  in })
 
         // Act
         sut.onAppear()
@@ -98,14 +125,18 @@ class ShortlyViewModelTests: XCTestCase {
                                        fullShareLink: "https://shrtco.de/share/KCveN",
                                        originalLink: "http://example.org/very/long/link.html")]
         var fetchAllCalledCount = 0
-        let sut = ShortlyViewModel(fetchAllURLs: { completion in
-            fetchAllCalledCount += 1
-            completion(allURLs)
-        }, removeURL: { model, completion in
-            XCTAssertEqual(model.code, "KCveN")
-            allURLs = []
-            completion(true)
-        })
+        let sut = ShortlyViewModel(
+            fetchAllURLs: { completion in
+                fetchAllCalledCount += 1
+                completion(allURLs)
+            },
+            saveURL: { _,_  in },
+            fetchURL: { _,_  in },
+            removeURL: { model, completion in
+                XCTAssertEqual(model.code, "KCveN")
+                allURLs = []
+                completion(true)
+            })
 
         // Act
         sut.onAppear()
@@ -119,5 +150,53 @@ class ShortlyViewModelTests: XCTestCase {
 
         // Assert
         XCTAssertEqual(fetchAllCalledCount, 2)
+    }
+
+    func testShortlyViewModel_fetch_shouldReturnAllURLsToView() {
+        let url = ShortlyURLModel(code: "KCveN",
+                              shortLink: "shrtco.de/KCveN",
+                              fullShortLink: "https://shrtco.de/KCveN",
+                              shortLink2: "9qr.de/KCveN",
+                              fullShortLink2: "https://9qr.de/KCveN",
+                              shareLink: "shrtco.de/share/KCveN",
+                              fullShareLink: "https://shrtco.de/share/KCveN",
+                              originalLink: "http://example.org/very/long/link.html")
+        var allURLs = [ShortlyURLModel]()
+        let useCaseModel = FetchShortURLUseCaseModel(url: "http://example.org/very/long/link.html")
+        var fetchAllCalledCount = 0
+        var isGeneratingBehaviour = [Bool]()
+        let sut = ShortlyViewModel(
+            fetchAllURLs: { completion in
+                fetchAllCalledCount += 1
+                completion(allURLs)
+            },
+            saveURL: { model, completion in
+                XCTAssertEqual(model, url)
+                allURLs = [url]
+                completion(true)
+            },
+            fetchURL: { model, completion in
+                XCTAssertEqual(model, useCaseModel)
+                completion(url)
+            },
+            removeURL: { _,_ in })
+
+        // Act
+        sut.onAppear()
+        let sub = sut.$isGeneratingURL.sink { isGenerating in
+            isGeneratingBehaviour.append(isGenerating)
+        }
+
+        sut.createURL("http://example.org/very/long/link.html")
+
+        _ = sut.$shortlyURLViewModels.sink { urls in
+            XCTAssertEqual(urls.count, 1)
+        }
+
+        sub.cancel()
+
+        // Assert
+        XCTAssertEqual(fetchAllCalledCount, 2)
+        XCTAssertEqual(isGeneratingBehaviour, [false, true, false])
     }
 }
