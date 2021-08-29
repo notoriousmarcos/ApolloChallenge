@@ -14,7 +14,7 @@ class FetchAllShortURLUseCaseIntegrationTests: XCTestCase {
     func testFetchAllShortURLUseCase_fetch_ShouldReceiveAllShortlyURLs() {
         // Arrange
         let context = CoreDataStore(.inMemory).container.newBackgroundContext()
-        let client = CoreDataFetchAllDatabaseClient(context: context)
+        let client = CoreDataDatabaseFetchAllClient(context: context)
         let sut = DatabaseFetchAllShortURLUseCase(databaseClient: client)
         let model = ShortlyURLModel(code: "KCveN",
                                     shortLink: "shrtco.de/KCveN",

@@ -1,5 +1,5 @@
 //
-//  CoreDataFetchAllClient.swift
+//  CoreDataFetchAllDatabaseClientTests.swift
 //  ShortlyTests
 //
 //  Created by marcos.brito on 28/08/21.
@@ -22,7 +22,7 @@ class CoreDataFetchAllDatabaseClientTests: XCTestCase {
                                                  fullShareLink: "https://shrtco.de/share/KCveN",
                                                  originalLink: "http://example.org/very/long/link.html")
         let context = CoreDataStore(.inMemory).container.newBackgroundContext()
-        let sut = CoreDataFetchAllDatabaseClient(context: context)
+        let sut = CoreDataDatabaseFetchAllClient(context: context)
         expectation(forNotification: .NSManagedObjectContextDidSave, object: context) { _ in
             return true
         }
@@ -57,7 +57,7 @@ class CoreDataFetchAllDatabaseClientTests: XCTestCase {
         // Arrange
 
         let context = CoreDataStore(.inMemory).container.newBackgroundContext()
-        let sut = CoreDataFetchAllDatabaseClient(context: context)
+        let sut = CoreDataDatabaseFetchAllClient(context: context)
 
         // Act
         sut.fetchAll { result in
