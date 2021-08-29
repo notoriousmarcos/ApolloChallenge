@@ -9,78 +9,6 @@ import XCTest
 import Combine
 @testable import Shortly
 
-class ShortlyViewModel: ObservableObject, ShortlyViewModelProtocol {
-
-    @Published public var shortlyURLViewModels: [ShortlyURLViewModel] = []
-    @Published public var isGeneratingURL: Bool = false
-
-    private var shortURLs: [ShortlyURLModel] = []
-    private var fetchAllURLs: FetchAllAction
-    private var saveURL: SaveAction
-    private var fetchURL: FetchAction
-    private var removeURL: RemoveAction
-
-    init(fetchAllURLs: @escaping FetchAllAction,
-         saveURL: @escaping SaveAction,
-         fetchURL: @escaping FetchAction,
-         removeURL: @escaping RemoveAction) {
-        self.fetchAllURLs = fetchAllURLs
-        self.saveURL = saveURL
-        self.fetchURL = fetchURL
-        self.removeURL = removeURL
-    }
-
-    public func onAppear() {
-        self.getAllURLs()
-    }
-
-    func createURL(_ urlString: String) {
-        isGeneratingURL = true
-        let model = FetchShortURLUseCaseModel(url: urlString)
-        fetchURL(model) { [weak self] url in
-            self?.saveURL(url) { [weak self] success in
-                if success {
-                    self?.getAllURLs()
-                    isGeneratingURL = false
-                }
-            }
-        }
-    }
-
-    func deleteURL(_ viewModel: ShortlyURLViewModel) {
-        guard let model = shortURLs.first(where: { $0.code == viewModel.code }) else {
-            return
-        }
-        removeURL(model) { [weak self] success in
-            if success {
-                self?.getAllURLs()
-            }
-        }
-    }
-
-    private func getAllURLs() {
-        self.fetchAllURLs { [weak self] urls in
-            self?.shortURLs = urls
-            self?.shortlyURLViewModels = urls.compactMap {
-                ShortlyURLViewModel(code: $0.code,
-                                    shortLink: $0.shortLink,
-                                    originalLink: $0.originalLink)
-            }
-        }
-    }
-}
-
-protocol ShortlyViewModelProtocol {
-    typealias RemoveAction = (ShortlyURLModel, (Bool) -> Void) -> Void
-    typealias SaveAction = (ShortlyURLModel, (Bool) -> Void) -> Void
-    typealias FetchAction = (FetchShortURLUseCaseModel, (ShortlyURLModel) -> Void) -> Void
-    typealias FetchAllAction = (([ShortlyURLModel]) -> Void) -> Void
-
-    func onAppear()
-    func createURL(_ urlString: String)
-    func deleteURL(_ model: ShortlyURLViewModel)
-}
-
 class ShortlyViewModelTests: XCTestCase {
 
     private var cancellables = Set<AnyCancellable>()
@@ -107,7 +35,7 @@ class ShortlyViewModelTests: XCTestCase {
         // Act
         sut.onAppear()
 
-        _ = sut.$shortlyURLViewModels.sink { urls in
+        _ = sut.shortlyURLViewModelsPublisher.sink { urls in
             XCTAssertEqual(urls.count, 1)
         }
 
@@ -144,7 +72,7 @@ class ShortlyViewModelTests: XCTestCase {
                                           shortLink: "shrtco.de/KCveN",
                                           originalLink: "http://example.org/very/long/link.html"))
 
-        _ = sut.$shortlyURLViewModels.sink { urls in
+        _ = sut.shortlyURLViewModelsPublisher.sink { urls in
             XCTAssertEqual(urls.count, 0)
         }
 
@@ -183,13 +111,13 @@ class ShortlyViewModelTests: XCTestCase {
 
         // Act
         sut.onAppear()
-        let sub = sut.$isGeneratingURL.sink { isGenerating in
+        let sub = sut.isGeneratingURLPublisher.sink { isGenerating in
             isGeneratingBehaviour.append(isGenerating)
         }
 
         sut.createURL("http://example.org/very/long/link.html")
 
-        _ = sut.$shortlyURLViewModels.sink { urls in
+        _ = sut.shortlyURLViewModelsPublisher.sink { urls in
             XCTAssertEqual(urls.count, 1)
         }
 

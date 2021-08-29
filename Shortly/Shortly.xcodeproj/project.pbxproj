@@ -64,6 +64,7 @@
 		775F78B626DBBE6A0039E447 /* ShortlyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78B526DBBE6A0039E447 /* ShortlyViewModelTests.swift */; };
 		775F78B926DBC1570039E447 /* ShortlyURLViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78B826DBC1570039E447 /* ShortlyURLViewModelTests.swift */; };
 		775F78BD26DBC25A0039E447 /* ShortlyURLViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78BC26DBC25A0039E447 /* ShortlyURLViewModel.swift */; };
+		775F78BF26DBD7450039E447 /* ShortlyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78BE26DBD7450039E447 /* ShortlyViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,7 @@
 		775F78B526DBBE6A0039E447 /* ShortlyViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyViewModelTests.swift; sourceTree = "<group>"; };
 		775F78B826DBC1570039E447 /* ShortlyURLViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyURLViewModelTests.swift; sourceTree = "<group>"; };
 		775F78BC26DBC25A0039E447 /* ShortlyURLViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyURLViewModel.swift; sourceTree = "<group>"; };
+		775F78BE26DBD7450039E447 /* ShortlyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -511,6 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				775F78BB26DBC2370039E447 /* Model */,
+				775F78BE26DBD7450039E447 /* ShortlyViewModel.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				775F787026DA89270039E447 /* DatabaseFetchAllClient.swift in Sources */,
 				775F785326DA70180039E447 /* FetchAllShortURLUseCase.swift in Sources */,
 				775F78BD26DBC25A0039E447 /* ShortlyURLViewModel.swift in Sources */,
+				775F78BF26DBD7450039E447 /* ShortlyViewModel.swift in Sources */,
 				775F787F26DA928F0039E447 /* DatabaseFetchAllShortURLUseCase.swift in Sources */,
 				775F784126D9C27B0039E447 /* ShortlyURLModel.swift in Sources */,
 				775F78A726DBB5930039E447 /* DatabaseRemoveShortURLUseCase.swift in Sources */,
