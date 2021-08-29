@@ -44,7 +44,6 @@
 		775F788C26DAA74E0039E447 /* NativeHTTPGetClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F788B26DAA74E0039E447 /* NativeHTTPGetClient.swift */; };
 		775F788F26DAA8450039E447 /* CoreDataShortURLDatabaseSaveClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F788E26DAA8450039E447 /* CoreDataShortURLDatabaseSaveClientTests.swift */; };
 		775F789126DAC2AC0039E447 /* CoreDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789026DAC2AC0039E447 /* CoreDataStoreTests.swift */; };
-		775F789426DAC2E50039E447 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789326DAC2E50039E447 /* CoreDataStore.swift */; };
 		775F789626DAC3770039E447 /* ShortlyURLManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789526DAC3770039E447 /* ShortlyURLManagedObjectExtension.swift */; };
 		775F789826DACB270039E447 /* CoreDataShortURLDatabaseSaveClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789726DACB270039E447 /* CoreDataShortURLDatabaseSaveClient.swift */; };
 		775F789A26DACBBF0039E447 /* CoreDataFetchAllDatabaseClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789926DACBBF0039E447 /* CoreDataFetchAllDatabaseClientTests.swift */; };
@@ -73,6 +72,15 @@
 		775F78D226DC01E10039E447 /* ShortlyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78D126DC01E10039E447 /* ShortlyListView.swift */; };
 		775F78D426DC03030039E447 /* ShortenLinkContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78D326DC03030039E447 /* ShortenLinkContainerView.swift */; };
 		775F78D726DC05020039E447 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78D626DC05020039E447 /* MainButton.swift */; };
+		775F78DB26DC076E0039E447 /* FetchAllShortURLUseCaseFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78DA26DC076E0039E447 /* FetchAllShortURLUseCaseFactoryTests.swift */; };
+		775F78DD26DC09240039E447 /* FetchShortURLUseCaseFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78DC26DC09240039E447 /* FetchShortURLUseCaseFactoryTests.swift */; };
+		775F78DF26DC09F10039E447 /* RemoveShortURLUseCaseFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78DE26DC09F10039E447 /* RemoveShortURLUseCaseFactoryTests.swift */; };
+		775F78E126DC0AB30039E447 /* SaveShortURLUseCaseFactoryTests copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78E026DC0AB30039E447 /* SaveShortURLUseCaseFactoryTests copy.swift */; };
+		775F78E526DC0BA30039E447 /* RemoveShortURLUseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78E426DC0BA30039E447 /* RemoveShortURLUseCaseFactory.swift */; };
+		775F78E726DC0BAE0039E447 /* SaveShortURLUseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78E626DC0BAE0039E447 /* SaveShortURLUseCaseFactory.swift */; };
+		775F78E926DC0BAF0039E447 /* FetchShortURLUseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78E826DC0BAF0039E447 /* FetchShortURLUseCaseFactory.swift */; };
+		775F78EB26DC0BB10039E447 /* FetchAllURLUsecaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78EA26DC0BB10039E447 /* FetchAllURLUsecaseFactory.swift */; };
+		775F78EC26DC0C880039E447 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789326DAC2E50039E447 /* CoreDataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +174,14 @@
 		775F78D126DC01E10039E447 /* ShortlyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyListView.swift; sourceTree = "<group>"; };
 		775F78D326DC03030039E447 /* ShortenLinkContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortenLinkContainerView.swift; sourceTree = "<group>"; };
 		775F78D626DC05020039E447 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
+		775F78DA26DC076E0039E447 /* FetchAllShortURLUseCaseFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllShortURLUseCaseFactoryTests.swift; sourceTree = "<group>"; };
+		775F78DC26DC09240039E447 /* FetchShortURLUseCaseFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShortURLUseCaseFactoryTests.swift; sourceTree = "<group>"; };
+		775F78DE26DC09F10039E447 /* RemoveShortURLUseCaseFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveShortURLUseCaseFactoryTests.swift; sourceTree = "<group>"; };
+		775F78E026DC0AB30039E447 /* SaveShortURLUseCaseFactoryTests copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SaveShortURLUseCaseFactoryTests copy.swift"; sourceTree = "<group>"; };
+		775F78E426DC0BA30039E447 /* RemoveShortURLUseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveShortURLUseCaseFactory.swift; sourceTree = "<group>"; };
+		775F78E626DC0BAE0039E447 /* SaveShortURLUseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveShortURLUseCaseFactory.swift; sourceTree = "<group>"; };
+		775F78E826DC0BAF0039E447 /* FetchShortURLUseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShortURLUseCaseFactory.swift; sourceTree = "<group>"; };
+		775F78EA26DC0BB10039E447 /* FetchAllURLUsecaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllURLUsecaseFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +232,7 @@
 		775F780226D9B78F0039E447 /* Shortly */ = {
 			isa = PBXGroup;
 			children = (
+				775F78E326DC0B900039E447 /* Main */,
 				775F783626D9B9DD0039E447 /* Domain */,
 				775F785426DA70EC0039E447 /* Data */,
 				775F788826DAA7240039E447 /* Infra */,
@@ -242,6 +259,7 @@
 		775F781926D9B7900039E447 /* ShortlyTests */ = {
 			isa = PBXGroup;
 			children = (
+				775F78D926DC07260039E447 /* Main */,
 				775F789D26DAD7D90039E447 /* UseCaseIntegration */,
 				775F786126DA75AD0039E447 /* Mocks */,
 				775F783826D9BA4F0039E447 /* Domain */,
@@ -592,6 +610,44 @@
 			path = Commons;
 			sourceTree = "<group>";
 		};
+		775F78D926DC07260039E447 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				775F78E226DC0B790039E447 /* Factory */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		775F78E226DC0B790039E447 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				775F78DE26DC09F10039E447 /* RemoveShortURLUseCaseFactoryTests.swift */,
+				775F78E026DC0AB30039E447 /* SaveShortURLUseCaseFactoryTests copy.swift */,
+				775F78DC26DC09240039E447 /* FetchShortURLUseCaseFactoryTests.swift */,
+				775F78DA26DC076E0039E447 /* FetchAllShortURLUseCaseFactoryTests.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		775F78E326DC0B900039E447 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				775F78ED26DC0CBE0039E447 /* Factory */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		775F78ED26DC0CBE0039E447 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				775F78EA26DC0BB10039E447 /* FetchAllURLUsecaseFactory.swift */,
+				775F78E826DC0BAF0039E447 /* FetchShortURLUseCaseFactory.swift */,
+				775F78E626DC0BAE0039E447 /* SaveShortURLUseCaseFactory.swift */,
+				775F78E426DC0BA30039E447 /* RemoveShortURLUseCaseFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -722,6 +778,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				775F78EC26DC0C880039E447 /* CoreDataStore.swift in Sources */,
 				775F788326DA97820039E447 /* DatabaseSaveShortURLUseCase.swift in Sources */,
 				775F78D426DC03030039E447 /* ShortenLinkContainerView.swift in Sources */,
 				775F787D26DA91E00039E447 /* FetchAllShortURLError.swift in Sources */,
@@ -733,8 +790,11 @@
 				775F78D226DC01E10039E447 /* ShortlyListView.swift in Sources */,
 				775F78CE26DBFE9F0039E447 /* ShortlyViewCell.swift in Sources */,
 				775F785926DA71650039E447 /* HTTPGetClient.swift in Sources */,
+				775F78E926DC0BAF0039E447 /* FetchShortURLUseCaseFactory.swift in Sources */,
 				775F781026D9B7900039E447 /* Shortly.xcdatamodeld in Sources */,
 				775F789C26DAD5050039E447 /* CoreDataDatabaseFetchAllClient.swift in Sources */,
+				775F78E726DC0BAE0039E447 /* SaveShortURLUseCaseFactory.swift in Sources */,
+				775F78E526DC0BA30039E447 /* RemoveShortURLUseCaseFactory.swift in Sources */,
 				775F78D726DC05020039E447 /* MainButton.swift in Sources */,
 				775F786B26DA81A50039E447 /* DataExtension.swift in Sources */,
 				775F786D26DA87560039E447 /* SaveShortURLUseCase.swift in Sources */,
@@ -751,6 +811,7 @@
 				775F78BD26DBC25A0039E447 /* ShortlyURLViewModel.swift in Sources */,
 				775F78BF26DBD7450039E447 /* ShortlyViewModel.swift in Sources */,
 				775F78D026DC01330039E447 /* EmptyView.swift in Sources */,
+				775F78EB26DC0BB10039E447 /* FetchAllURLUsecaseFactory.swift in Sources */,
 				775F787F26DA928F0039E447 /* DatabaseFetchAllShortURLUseCase.swift in Sources */,
 				775F78C426DBE3400039E447 /* Colors.swift in Sources */,
 				775F784126D9C27B0039E447 /* ShortlyURLModel.swift in Sources */,
@@ -771,17 +832,20 @@
 				775F781B26D9B7900039E447 /* ShortlyTests.swift in Sources */,
 				775F78A126DBA4050039E447 /* SaveShortURLUseCaseIntegrationTests.swift in Sources */,
 				775F789126DAC2AC0039E447 /* CoreDataStoreTests.swift in Sources */,
+				775F78DB26DC076E0039E447 /* FetchAllShortURLUseCaseFactoryTests.swift in Sources */,
 				775F788126DA93140039E447 /* DatabaseSaveShortURLUseCaseTests.swift in Sources */,
+				775F78DD26DC09240039E447 /* FetchShortURLUseCaseFactoryTests.swift in Sources */,
 				775F78B626DBBE6A0039E447 /* ShortlyViewModelTests.swift in Sources */,
 				775F784C26DA66700039E447 /* FetchShortURErrorTests.swift in Sources */,
 				775F786526DA75DA0039E447 /* MockHTTPGetClient.swift in Sources */,
+				775F78E126DC0AB30039E447 /* SaveShortURLUseCaseFactoryTests copy.swift in Sources */,
 				775F784726DA65620039E447 /* FetchShortURLUseCaseModelTests.swift in Sources */,
 				775F78AD26DBB9090039E447 /* DatabaseRemoveShortURLUseCaseTests.swift in Sources */,
 				775F787726DA8B240039E447 /* MockShortURLDatabaseFetchAllClient.swift in Sources */,
 				775F78B926DBC1570039E447 /* ShortlyURLViewModelTests.swift in Sources */,
 				775F78AF26DBB92C0039E447 /* MockShortURLDatabaseRemoveClient.swift in Sources */,
 				775F787526DA8A540039E447 /* MockShortURLDatabaseSaveClient.swift in Sources */,
-				775F789426DAC2E50039E447 /* CoreDataStore.swift in Sources */,
+				775F78DF26DC09F10039E447 /* RemoveShortURLUseCaseFactoryTests.swift in Sources */,
 				775F78B326DBBB890039E447 /* RemoveShortURLUseCaseIntegrationTests.swift in Sources */,
 				775F789A26DACBBF0039E447 /* CoreDataFetchAllDatabaseClientTests.swift in Sources */,
 				775F78A326DBA7520039E447 /* FetchAllShortURLUseCaseIntegrationTests.swift in Sources */,
