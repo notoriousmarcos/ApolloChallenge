@@ -35,7 +35,7 @@ class ShortlyViewModelTests: XCTestCase {
         // Act
         sut.onAppear()
 
-        _ = sut.shortlyURLViewModelsPublisher.sink { urls in
+        _ = sut.$shortlyURLViewModels.sink { urls in
             XCTAssertEqual(urls.count, 1)
         }
 
@@ -72,7 +72,7 @@ class ShortlyViewModelTests: XCTestCase {
                                           shortLink: "shrtco.de/KCveN",
                                           originalLink: "http://example.org/very/long/link.html"))
 
-        _ = sut.shortlyURLViewModelsPublisher.sink { urls in
+        _ = sut.$shortlyURLViewModels.sink { urls in
             XCTAssertEqual(urls.count, 0)
         }
 
@@ -111,13 +111,13 @@ class ShortlyViewModelTests: XCTestCase {
 
         // Act
         sut.onAppear()
-        let sub = sut.isGeneratingURLPublisher.sink { isGenerating in
+        let sub = sut.$isGeneratingURL.sink { isGenerating in
             isGeneratingBehaviour.append(isGenerating)
         }
 
         sut.createURL("http://example.org/very/long/link.html")
 
-        _ = sut.shortlyURLViewModelsPublisher.sink { urls in
+        _ = sut.$shortlyURLViewModels.sink { urls in
             XCTAssertEqual(urls.count, 1)
         }
 

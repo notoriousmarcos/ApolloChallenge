@@ -5,29 +5,26 @@
 //  Created by marcos.brito on 29/08/21.
 //
 
-import Foundation
+import SwiftUI
 
-public protocol ShortlyViewModelProtocol {
+public protocol ShortlyViewModelProtocol: ObservableObject {
     typealias RemoveAction = (ShortlyURLModel, (Bool) -> Void) -> Void
     typealias SaveAction = (ShortlyURLModel, (Bool) -> Void) -> Void
     typealias FetchAction = (FetchShortURLUseCaseModel, (ShortlyURLModel) -> Void) -> Void
     typealias FetchAllAction = (([ShortlyURLModel]) -> Void) -> Void
 
-    var shortlyURLViewModelsPublisher: Published<[ShortlyURLViewModel]>.Publisher { get }
-    var isGeneratingURLPublisher: Published<Bool>.Publisher { get }
+    var shortlyURLViewModels: [ShortlyURLViewModel] { get }
+    var isGeneratingURL: Bool { get }
 
     func onAppear()
     func createURL(_ urlString: String)
     func deleteURL(_ model: ShortlyURLViewModel)
 }
 
-class ShortlyViewModel: ObservableObject, ShortlyViewModelProtocol {
+class ShortlyViewModel: ShortlyViewModelProtocol {
 
-    public var shortlyURLViewModelsPublisher: Published<[ShortlyURLViewModel]>.Publisher { $shortlyURLViewModels }
-    public var isGeneratingURLPublisher: Published<Bool>.Publisher { $isGeneratingURL }
-
-    @Published private var shortlyURLViewModels: [ShortlyURLViewModel] = []
-    @Published private var isGeneratingURL: Bool = false
+    @Published public var shortlyURLViewModels: [ShortlyURLViewModel] = []
+    @Published public var isGeneratingURL: Bool = false
 
     private var shortURLs: [ShortlyURLModel] = []
     private var fetchAllURLs: FetchAllAction

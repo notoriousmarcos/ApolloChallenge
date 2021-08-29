@@ -11,7 +11,6 @@
 		775F780626D9B78F0039E447 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F780526D9B78F0039E447 /* ContentView.swift */; };
 		775F780826D9B7900039E447 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775F780726D9B7900039E447 /* Assets.xcassets */; };
 		775F780B26D9B7900039E447 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775F780A26D9B7900039E447 /* Preview Assets.xcassets */; };
-		775F780D26D9B7900039E447 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F780C26D9B7900039E447 /* Persistence.swift */; };
 		775F781026D9B7900039E447 /* Shortly.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 775F780E26D9B7900039E447 /* Shortly.xcdatamodeld */; };
 		775F781B26D9B7900039E447 /* ShortlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F781A26D9B7900039E447 /* ShortlyTests.swift */; };
 		775F782626D9B7900039E447 /* ShortlyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F782526D9B7900039E447 /* ShortlyUITests.swift */; };
@@ -65,6 +64,15 @@
 		775F78B926DBC1570039E447 /* ShortlyURLViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78B826DBC1570039E447 /* ShortlyURLViewModelTests.swift */; };
 		775F78BD26DBC25A0039E447 /* ShortlyURLViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78BC26DBC25A0039E447 /* ShortlyURLViewModel.swift */; };
 		775F78BF26DBD7450039E447 /* ShortlyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78BE26DBD7450039E447 /* ShortlyViewModel.swift */; };
+		775F78C226DBD9AB0039E447 /* ShortlyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78C126DBD9AB0039E447 /* ShortlyUIView.swift */; };
+		775F78C426DBE3400039E447 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78C326DBE3400039E447 /* Colors.swift */; };
+		775F78C826DBE4F70039E447 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 775F78C726DBE4F70039E447 /* Poppins-Medium.ttf */; };
+		775F78CB26DBE5730039E447 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78CA26DBE5730039E447 /* Fonts.swift */; };
+		775F78CE26DBFE9F0039E447 /* ShortlyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78CD26DBFE9F0039E447 /* ShortlyViewCell.swift */; };
+		775F78D026DC01330039E447 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78CF26DC01330039E447 /* EmptyView.swift */; };
+		775F78D226DC01E10039E447 /* ShortlyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78D126DC01E10039E447 /* ShortlyListView.swift */; };
+		775F78D426DC03030039E447 /* ShortenLinkContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78D326DC03030039E447 /* ShortenLinkContainerView.swift */; };
+		775F78D726DC05020039E447 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78D626DC05020039E447 /* MainButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +98,6 @@
 		775F780526D9B78F0039E447 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		775F780726D9B7900039E447 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		775F780A26D9B7900039E447 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		775F780C26D9B7900039E447 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		775F780F26D9B7900039E447 /* Shortly.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shortly.xcdatamodel; sourceTree = "<group>"; };
 		775F781126D9B7900039E447 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		775F781626D9B7900039E447 /* ShortlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShortlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +156,16 @@
 		775F78B826DBC1570039E447 /* ShortlyURLViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyURLViewModelTests.swift; sourceTree = "<group>"; };
 		775F78BC26DBC25A0039E447 /* ShortlyURLViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyURLViewModel.swift; sourceTree = "<group>"; };
 		775F78BE26DBD7450039E447 /* ShortlyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyViewModel.swift; sourceTree = "<group>"; };
+		775F78C126DBD9AB0039E447 /* ShortlyUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyUIView.swift; sourceTree = "<group>"; };
+		775F78C326DBE3400039E447 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		775F78C726DBE4F70039E447 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		775F78C926DBE5040039E447 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		775F78CA26DBE5730039E447 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		775F78CD26DBFE9F0039E447 /* ShortlyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyViewCell.swift; sourceTree = "<group>"; };
+		775F78CF26DC01330039E447 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		775F78D126DC01E10039E447 /* ShortlyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyListView.swift; sourceTree = "<group>"; };
+		775F78D326DC03030039E447 /* ShortenLinkContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortenLinkContainerView.swift; sourceTree = "<group>"; };
+		775F78D626DC05020039E447 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,14 +216,14 @@
 		775F780226D9B78F0039E447 /* Shortly */ = {
 			isa = PBXGroup;
 			children = (
-				775F78BA26DBC2290039E447 /* Presenter */,
 				775F783626D9B9DD0039E447 /* Domain */,
 				775F785426DA70EC0039E447 /* Data */,
-				775F780326D9B78F0039E447 /* ShortlyApp.swift */,
 				775F788826DAA7240039E447 /* Infra */,
+				775F78BA26DBC2290039E447 /* Presenter */,
 				775F780526D9B78F0039E447 /* ContentView.swift */,
-				775F780726D9B7900039E447 /* Assets.xcassets */,
-				775F780C26D9B7900039E447 /* Persistence.swift */,
+				775F78C026DBD98E0039E447 /* UI */,
+				775F780326D9B78F0039E447 /* ShortlyApp.swift */,
+				775F78C526DBE4BD0039E447 /* Resources */,
 				775F781126D9B7900039E447 /* Info.plist */,
 				775F780E26D9B7900039E447 /* Shortly.xcdatamodeld */,
 				775F780926D9B7900039E447 /* Preview Content */,
@@ -225,12 +242,12 @@
 		775F781926D9B7900039E447 /* ShortlyTests */ = {
 			isa = PBXGroup;
 			children = (
-				775F78B426DBBD770039E447 /* Presenter */,
 				775F789D26DAD7D90039E447 /* UseCaseIntegration */,
 				775F786126DA75AD0039E447 /* Mocks */,
 				775F783826D9BA4F0039E447 /* Domain */,
 				775F785626DA71210039E447 /* Data */,
 				775F788426DA97E90039E447 /* Infra */,
+				775F78B426DBBD770039E447 /* Presenter */,
 				775F781A26D9B7900039E447 /* ShortlyTests.swift */,
 				775F781C26D9B7900039E447 /* Info.plist */,
 			);
@@ -526,6 +543,55 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		775F78C026DBD98E0039E447 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				775F78CC26DBE96E0039E447 /* Views */,
+				775F78C326DBE3400039E447 /* Colors.swift */,
+				775F78CA26DBE5730039E447 /* Fonts.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		775F78C526DBE4BD0039E447 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				775F78C626DBE4CC0039E447 /* Font */,
+				775F780726D9B7900039E447 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		775F78C626DBE4CC0039E447 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				775F78C726DBE4F70039E447 /* Poppins-Medium.ttf */,
+				775F78C926DBE5040039E447 /* Poppins-Bold.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		775F78CC26DBE96E0039E447 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				775F78D526DC04E40039E447 /* Commons */,
+				775F78C126DBD9AB0039E447 /* ShortlyUIView.swift */,
+				775F78CD26DBFE9F0039E447 /* ShortlyViewCell.swift */,
+				775F78CF26DC01330039E447 /* EmptyView.swift */,
+				775F78D126DC01E10039E447 /* ShortlyListView.swift */,
+				775F78D326DC03030039E447 /* ShortenLinkContainerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		775F78D526DC04E40039E447 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				775F78D626DC05020039E447 /* MainButton.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -629,6 +695,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				775F78C826DBE4F70039E447 /* Poppins-Medium.ttf in Resources */,
 				775F780B26D9B7900039E447 /* Preview Assets.xcassets in Resources */,
 				775F780826D9B7900039E447 /* Assets.xcassets in Resources */,
 			);
@@ -656,16 +723,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				775F788326DA97820039E447 /* DatabaseSaveShortURLUseCase.swift in Sources */,
+				775F78D426DC03030039E447 /* ShortenLinkContainerView.swift in Sources */,
 				775F787D26DA91E00039E447 /* FetchAllShortURLError.swift in Sources */,
 				775F783D26D9BBE10039E447 /* Model.swift in Sources */,
 				775F785B26DA71DC0039E447 /* HTTPError.swift in Sources */,
 				775F786826DA81760039E447 /* RemoteFetchShortURLUseCase.swift in Sources */,
 				775F787B26DA90950039E447 /* DatabaseError.swift in Sources */,
-				775F780D26D9B7900039E447 /* Persistence.swift in Sources */,
 				775F78A526DBB16C0039E447 /* RemoveShortURLUseCase.swift in Sources */,
+				775F78D226DC01E10039E447 /* ShortlyListView.swift in Sources */,
+				775F78CE26DBFE9F0039E447 /* ShortlyViewCell.swift in Sources */,
 				775F785926DA71650039E447 /* HTTPGetClient.swift in Sources */,
 				775F781026D9B7900039E447 /* Shortly.xcdatamodeld in Sources */,
 				775F789C26DAD5050039E447 /* CoreDataDatabaseFetchAllClient.swift in Sources */,
+				775F78D726DC05020039E447 /* MainButton.swift in Sources */,
 				775F786B26DA81A50039E447 /* DataExtension.swift in Sources */,
 				775F786D26DA87560039E447 /* SaveShortURLUseCase.swift in Sources */,
 				775F78AB26DBB7000039E447 /* CoreDataShortURLDatabaseRemoveClient.swift in Sources */,
@@ -674,11 +744,15 @@
 				775F780426D9B78F0039E447 /* ShortlyApp.swift in Sources */,
 				775F789626DAC3770039E447 /* ShortlyURLManagedObjectExtension.swift in Sources */,
 				775F787226DA89B50039E447 /* DatabaseSaveClient.swift in Sources */,
+				775F78CB26DBE5730039E447 /* Fonts.swift in Sources */,
 				775F787026DA89270039E447 /* DatabaseFetchAllClient.swift in Sources */,
+				775F78C226DBD9AB0039E447 /* ShortlyUIView.swift in Sources */,
 				775F785326DA70180039E447 /* FetchAllShortURLUseCase.swift in Sources */,
 				775F78BD26DBC25A0039E447 /* ShortlyURLViewModel.swift in Sources */,
 				775F78BF26DBD7450039E447 /* ShortlyViewModel.swift in Sources */,
+				775F78D026DC01330039E447 /* EmptyView.swift in Sources */,
 				775F787F26DA928F0039E447 /* DatabaseFetchAllShortURLUseCase.swift in Sources */,
+				775F78C426DBE3400039E447 /* Colors.swift in Sources */,
 				775F784126D9C27B0039E447 /* ShortlyURLModel.swift in Sources */,
 				775F78A726DBB5930039E447 /* DatabaseRemoveShortURLUseCase.swift in Sources */,
 				775F784F26DA683C0039E447 /* FetchShortURLError.swift in Sources */,
