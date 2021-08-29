@@ -22,7 +22,6 @@ struct ShortenLinkContainerView: View {
         }
         .padding(50)
         .background(Colors.secundary)
-
     }
 }
 

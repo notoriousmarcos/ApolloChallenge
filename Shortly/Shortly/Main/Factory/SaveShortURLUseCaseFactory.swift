@@ -13,7 +13,7 @@ public protocol SaveShortURLUseCaseFactoryProtocol {
 
 public struct SaveShortURLUseCaseFactory: SaveShortURLUseCaseFactoryProtocol {
     public func make(withStore store: CoreDataStore) -> SaveShortURLUseCase {
-        let context = store.container.newBackgroundContext()
+        let context = store.container.viewContext
         let client = CoreDataShortURLDatabaseSaveClient(context: context)
         return DatabaseSaveShortURLUseCase(databaseClient: client)
     }

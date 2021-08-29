@@ -8,10 +8,10 @@
 import SwiftUI
 
 public protocol ShortlyViewModelProtocol: ObservableObject {
-    typealias RemoveAction = (ShortlyURLModel, (Bool) -> Void) -> Void
-    typealias SaveAction = (ShortlyURLModel, (Bool) -> Void) -> Void
-    typealias FetchAction = (FetchShortURLUseCaseModel, (ShortlyURLModel) -> Void) -> Void
-    typealias FetchAllAction = (([ShortlyURLModel]) -> Void) -> Void
+    typealias RemoveAction = (ShortlyURLModel, @escaping (Bool) -> Void) -> Void
+    typealias SaveAction = (ShortlyURLModel, @escaping (Bool) -> Void) -> Void
+    typealias FetchAction = (FetchShortURLUseCaseModel, @escaping (Result<ShortlyURLModel, FetchShortURLError>) -> Void) -> Void
+    typealias FetchAllAction = (@escaping (Result<[ShortlyURLModel], FetchAllShortURLError>) -> Void) -> Void
 
     var shortlyURLViewModels: [ShortlyURLViewModel] { get }
     var isGeneratingURL: Bool { get }
@@ -49,13 +49,19 @@ class ShortlyViewModel: ShortlyViewModelProtocol {
     public func createURL(_ urlString: String) {
         isGeneratingURL = true
         let model = FetchShortURLUseCaseModel(url: urlString)
-        fetchURL(model) { [weak self] url in
-            self?.saveURL(url) { [weak self] success in
-                if success {
-                    self?.getAllURLs()
-                    isGeneratingURL = false
-                }
+        fetchURL(model) { [weak self] result in
+            switch result{
+                case .success(let url):
+                    self?.saveURL(url) { [weak self] success in
+                        if success {
+                            self?.getAllURLs()
+                            self?.isGeneratingURL = false
+                        }
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
             }
+
         }
     }
 
@@ -71,13 +77,19 @@ class ShortlyViewModel: ShortlyViewModelProtocol {
     }
 
     private func getAllURLs() {
-        self.fetchAllURLs { [weak self] urls in
-            self?.shortURLs = urls
-            self?.shortlyURLViewModels = urls.compactMap {
-                ShortlyURLViewModel(code: $0.code,
-                                    shortLink: $0.shortLink,
-                                    originalLink: $0.originalLink)
+        self.fetchAllURLs { [weak self] result in
+            switch result {
+                case .success(let urls):
+                    self?.shortURLs = urls
+                    self?.shortlyURLViewModels = urls.compactMap {
+                        ShortlyURLViewModel(code: $0.code,
+                                            shortLink: $0.shortLink,
+                                            originalLink: $0.originalLink)
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
             }
+
         }
     }
 }

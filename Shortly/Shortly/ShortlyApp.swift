@@ -7,14 +7,33 @@
 
 import SwiftUI
 
+class Main {
+    static var shared = Main()
+
+    let coreDataStore = CoreDataStore.shared
+    lazy var fetchAllUseCase = FetchAllURLUsecaseFactory().make(withStore: coreDataStore)
+    lazy var fetchUseCase = FetchShortURLUseCaseFactory().make()
+    lazy var saveUseCase = SaveShortURLUseCaseFactory().make(withStore: coreDataStore)
+    lazy var removeUseCase = RemoveShortURLUseCaseFactory().make(withStore: coreDataStore)
+
+    func makeShortlyViewModel() -> ShortlyViewModel {
+        ShortlyViewModel(
+            fetchAllURLs: fetchAllUseCase.execute,
+            saveURL: saveUseCase.execute,
+            fetchURL: fetchUseCase.execute,
+            removeURL: removeUseCase.execute
+        )
+    }
+}
+
 @main
 struct ShortlyApp: App {
-//    let persistenceController = PersistenceController.shared
+    let main = Main.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            ShortlyUIView(viewModel: main.makeShortlyViewModel())
+                .environment(\.managedObjectContext, main.coreDataStore.container.viewContext)
         }
     }
 }

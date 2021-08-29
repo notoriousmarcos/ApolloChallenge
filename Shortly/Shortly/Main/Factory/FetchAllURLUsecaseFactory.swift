@@ -13,7 +13,7 @@ public protocol FetchAllURLUsecaseFactoryProtocol {
 
 public struct FetchAllURLUsecaseFactory: FetchAllURLUsecaseFactoryProtocol {
     public func make(withStore store: CoreDataStore) -> FetchAllShortURLUseCase {
-        let context = store.container.newBackgroundContext()
+        let context = store.container.viewContext
         let client = CoreDataDatabaseFetchAllClient(context: context)
         return DatabaseFetchAllShortURLUseCase(databaseClient: client)
     }

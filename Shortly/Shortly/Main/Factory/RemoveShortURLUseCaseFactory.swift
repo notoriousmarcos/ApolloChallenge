@@ -13,7 +13,7 @@ public protocol RemoveShortURLUseCaseFactoryProtocol {
 
 public struct RemoveShortURLUseCaseFactory: RemoveShortURLUseCaseFactoryProtocol {
     public func make(withStore store: CoreDataStore) -> RemoveShortURLUseCase {
-        let context = store.container.newBackgroundContext()
+        let context = store.container.viewContext
         let client = CoreDataShortURLDatabaseRemoveClient(context: context)
         return DatabaseRemoveShortURLUseCase(databaseClient: client)
     }

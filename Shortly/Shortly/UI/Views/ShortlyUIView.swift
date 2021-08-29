@@ -29,14 +29,14 @@ struct ShortlyUIView_Previews: PreviewProvider {
     static var previews: some View {
         ShortlyUIView(viewModel: ShortlyViewModel(
                         fetchAllURLs: { completion in
-                            completion([ShortlyURLModel(code: "KCveN",
+                            completion(.success([ShortlyURLModel(code: "KCveN",
                                                         shortLink: "shrtco.de/KCveN",
                                                         fullShortLink: "https://shrtco.de/KCveN",
                                                         shortLink2: "9qr.de/KCveN",
                                                         fullShortLink2: "https://9qr.de/KCveN",
                                                         shareLink: "shrtco.de/share/KCveN",
                                                         fullShareLink: "https://shrtco.de/share/KCveN",
-                                                        originalLink: "http://example.org/very/long/link.html")])
+                                                        originalLink: "http://example.org/very/long/link.html")]))
                         },
                         saveURL: { _,_  in },
                         fetchURL: { _,_  in },
