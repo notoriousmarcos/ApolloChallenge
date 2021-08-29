@@ -51,6 +51,8 @@
 		775F789A26DACBBF0039E447 /* CoreDataFetchAllDatabaseClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789926DACBBF0039E447 /* CoreDataFetchAllDatabaseClientTests.swift */; };
 		775F789C26DAD5050039E447 /* CoreDataFetchAllDatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789B26DAD5050039E447 /* CoreDataFetchAllDatabaseClient.swift */; };
 		775F789F26DAD8200039E447 /* FetchShortURLUseCaseIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F789E26DAD8200039E447 /* FetchShortURLUseCaseIntegrationTests.swift */; };
+		775F78A126DBA4050039E447 /* SaveShortURLUseCaseIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78A026DBA4050039E447 /* SaveShortURLUseCaseIntegrationTests.swift */; };
+		775F78A326DBA7520039E447 /* FetchAllShortURLUseCaseIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F78A226DBA7520039E447 /* FetchAllShortURLUseCaseIntegrationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,8 @@
 		775F789926DACBBF0039E447 /* CoreDataFetchAllDatabaseClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFetchAllDatabaseClientTests.swift; sourceTree = "<group>"; };
 		775F789B26DAD5050039E447 /* CoreDataFetchAllDatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFetchAllDatabaseClient.swift; sourceTree = "<group>"; };
 		775F789E26DAD8200039E447 /* FetchShortURLUseCaseIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShortURLUseCaseIntegrationTests.swift; sourceTree = "<group>"; };
+		775F78A026DBA4050039E447 /* SaveShortURLUseCaseIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveShortURLUseCaseIntegrationTests.swift; sourceTree = "<group>"; };
+		775F78A226DBA7520039E447 /* FetchAllShortURLUseCaseIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllShortURLUseCaseIntegrationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,6 +451,8 @@
 		775F789D26DAD7D90039E447 /* UseCaseIntegration */ = {
 			isa = PBXGroup;
 			children = (
+				775F78A026DBA4050039E447 /* SaveShortURLUseCaseIntegrationTests.swift */,
+				775F78A226DBA7520039E447 /* FetchAllShortURLUseCaseIntegrationTests.swift */,
 				775F789E26DAD8200039E447 /* FetchShortURLUseCaseIntegrationTests.swift */,
 			);
 			path = UseCaseIntegration;
@@ -614,6 +620,7 @@
 			files = (
 				775F787926DA8BFB0039E447 /* DatabaseFetchAllShortURLUseCaseTests.swift in Sources */,
 				775F781B26D9B7900039E447 /* ShortlyTests.swift in Sources */,
+				775F78A126DBA4050039E447 /* SaveShortURLUseCaseIntegrationTests.swift in Sources */,
 				775F789126DAC2AC0039E447 /* CoreDataStoreTests.swift in Sources */,
 				775F788126DA93140039E447 /* DatabaseSaveShortURLUseCaseTests.swift in Sources */,
 				775F784C26DA66700039E447 /* FetchShortURErrorTests.swift in Sources */,
@@ -623,6 +630,7 @@
 				775F787526DA8A540039E447 /* MockShortURLDatabaseSaveClient.swift in Sources */,
 				775F789426DAC2E50039E447 /* CoreDataStore.swift in Sources */,
 				775F789A26DACBBF0039E447 /* CoreDataFetchAllDatabaseClientTests.swift in Sources */,
+				775F78A326DBA7520039E447 /* FetchAllShortURLUseCaseIntegrationTests.swift in Sources */,
 				775F786026DA72E20039E447 /* RemoteFetchShortURLUseCaseTests.swift in Sources */,
 				775F788726DA98360039E447 /* NativeHTTPGetClientTests.swift in Sources */,
 				775F788F26DAA8450039E447 /* CoreDataShortURLDatabaseSaveClientTests.swift in Sources */,
