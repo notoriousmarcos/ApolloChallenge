@@ -18,6 +18,8 @@ public class CoreDataDatabaseFetchAllClient: DatabaseFetchAllClient {
 
     public func fetchAll(completion: @escaping (DatabaseFetchAllClient.Result) -> Void) {
         let fetchRequest: NSFetchRequest<ShortlyURLManagedObject> = NSFetchRequest(entityName: "ShortlyURLManagedObject")
+        let sort = NSSortDescriptor(key: #keyPath(ShortlyURLManagedObject.timestamp), ascending: false)
+        fetchRequest.sortDescriptors = [sort]
         do {
             let result: [ShortlyURLManagedObject] = try context.fetch(fetchRequest)
             let urls = result.compactMap { $0.toShortlyURLModel() }
