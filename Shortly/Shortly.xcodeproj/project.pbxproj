@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		775F780426D9B78F0039E447 /* ShortlyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F780326D9B78F0039E447 /* ShortlyApp.swift */; };
-		775F780626D9B78F0039E447 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F780526D9B78F0039E447 /* ContentView.swift */; };
 		775F780826D9B7900039E447 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775F780726D9B7900039E447 /* Assets.xcassets */; };
 		775F780B26D9B7900039E447 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775F780A26D9B7900039E447 /* Preview Assets.xcassets */; };
 		775F781026D9B7900039E447 /* Shortly.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 775F780E26D9B7900039E447 /* Shortly.xcdatamodeld */; };
@@ -104,7 +103,6 @@
 /* Begin PBXFileReference section */
 		775F780026D9B78F0039E447 /* Shortly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shortly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		775F780326D9B78F0039E447 /* ShortlyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortlyApp.swift; sourceTree = "<group>"; };
-		775F780526D9B78F0039E447 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		775F780726D9B7900039E447 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		775F780A26D9B7900039E447 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		775F780F26D9B7900039E447 /* Shortly.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shortly.xcdatamodel; sourceTree = "<group>"; };
@@ -239,7 +237,6 @@
 				775F785426DA70EC0039E447 /* Data */,
 				775F788826DAA7240039E447 /* Infra */,
 				775F78BA26DBC2290039E447 /* Presenter */,
-				775F780526D9B78F0039E447 /* ContentView.swift */,
 				775F78C026DBD98E0039E447 /* UI */,
 				775F780326D9B78F0039E447 /* ShortlyApp.swift */,
 				775F78C526DBE4BD0039E447 /* Resources */,
@@ -804,7 +801,6 @@
 				775F78AB26DBB7000039E447 /* CoreDataShortURLDatabaseRemoveClient.swift in Sources */,
 				777BB92226DD4544004FE761 /* InputTextField.swift in Sources */,
 				775F788C26DAA74E0039E447 /* NativeHTTPGetClient.swift in Sources */,
-				775F780626D9B78F0039E447 /* ContentView.swift in Sources */,
 				775F780426D9B78F0039E447 /* ShortlyApp.swift in Sources */,
 				775F789626DAC3770039E447 /* ShortlyURLManagedObjectExtension.swift in Sources */,
 				775F787226DA89B50039E447 /* DatabaseSaveClient.swift in Sources */,
