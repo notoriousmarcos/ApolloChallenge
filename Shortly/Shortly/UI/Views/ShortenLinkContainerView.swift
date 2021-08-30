@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ShortenLinkContainerView: View {
+    @State private var inputState: InputTextField.InputState = .idle(placeholder: "Shorten a link here ...")
     @State private var url: String = ""
     @Binding var isLoading: Bool
     var createURL: (String) -> Void
@@ -15,11 +16,13 @@ struct ShortenLinkContainerView: View {
     var body: some View {
         HStack{
             VStack(alignment: .center, spacing: 10) {
-                TextField("Shorten a link here ...", text: $url)
-                    .padding(20)
-                    .background(Colors.white)
-                    .disabled(isLoading)
+                InputTextField(state: $inputState, text: $url, isDisabled: $isLoading)
                 MainButton(text: .constant("shorten it!"), isLoading: $isLoading) {
+                    guard !url.isEmpty else {
+                        inputState = .wrong(placeholder: "Please add a link here")
+                        return
+                    }
+                    inputState = .idle(placeholder: "Shorten a link here ...")
                     createURL(url)
                     url = ""
                 }
