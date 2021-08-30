@@ -35,7 +35,7 @@ struct ShortlyViewCell: View {
                 .font(.title2)
                 .foregroundColor(Colors.primary)
                 .padding(.horizontal, 23)
-            MainButton(text: .constant("Copy")) {
+            MainButton(text: .constant("Copy"), isDisabled: .constant(false)) {
                 UIPasteboard.general.string = model.shortLink
             }
             .padding(.all, 23)

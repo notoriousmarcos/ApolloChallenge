@@ -13,17 +13,17 @@ struct ShortenLinkContainerView: View {
     var createURL: (String) -> Void
     
     var body: some View {
-        VStack(alignment: .center, spacing: 10) {
-            if isLoading {
-                ProgressView()
-            } else {
+        HStack{
+            VStack(alignment: .center, spacing: 10) {
                 TextField("Shorten a link here ...", text: $url)
                     .padding(20)
                     .background(Colors.white)
-                MainButton(text: .constant("shorten it!")) {
+                    .disabled(isLoading)
+                MainButton(text: .constant("shorten it!"), isDisabled: $isLoading) {
                     createURL(url)
                     url = ""
                 }
+
             }
         }
         .padding(50)

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainButton: View {
     @Binding var text: String
+    @Binding var isDisabled: Bool
     var action: () -> Void
 
     var body: some View {
@@ -25,11 +26,12 @@ struct MainButton: View {
             .background(Colors.primary)
             .cornerRadius(4)
         })
+        .disabled(isDisabled)
     }
 }
 
 struct MainButton_Previews: PreviewProvider {
     static var previews: some View {
-        MainButton(text: .constant("Copy"), action: {})
+        MainButton(text: .constant("Copy"), isDisabled: .constant(false), action: {})
     }
 }
