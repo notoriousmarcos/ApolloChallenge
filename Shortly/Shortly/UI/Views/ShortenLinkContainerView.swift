@@ -19,7 +19,7 @@ struct ShortenLinkContainerView: View {
                     .padding(20)
                     .background(Colors.white)
                     .disabled(isLoading)
-                MainButton(text: .constant("shorten it!"), isDisabled: $isLoading) {
+                MainButton(text: .constant("shorten it!"), isLoading: $isLoading) {
                     createURL(url)
                     url = ""
                 }

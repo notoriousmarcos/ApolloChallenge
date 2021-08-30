@@ -63,10 +63,11 @@ class ShortlyViewModel: ShortlyViewModelProtocol {
                     self?.saveURL(url) { [weak self] success in
                         if success {
                             self?.getAllURLs()
-                            self?.isGeneratingURL = false
                         }
+                        self?.isGeneratingURL = false
                     }
                 case .failure(let error):
+                    self?.isGeneratingURL = false
                     self?.alert = AlertInfo(title: "Alert", message: error.localizedDescription, isShowing: true)
                     print(error.localizedDescription)
             }
