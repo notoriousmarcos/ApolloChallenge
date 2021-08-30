@@ -17,15 +17,17 @@ public class NativeHTTPGetClient: HTTPGetClient {
 
     public func get(to url: URL, with data: Data?, completion: @escaping (HTTPGetClient.Result) -> Void) {
         let task = session.dataTask(with: makeRequest(url, data: data)) { data, response, error in
-            guard let httpResponse = response as? HTTPURLResponse else {
-                return completion(.failure(.badRequest))
-            }
-            guard (200...299).contains(httpResponse.statusCode) else {
-                let error = HTTPError(rawValue: httpResponse.statusCode) ?? .unknown
-                return completion(.failure(error))
-            }
+            DispatchQueue.main.async {
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    return completion(.failure(.badRequest))
+                }
+                guard (200...299).contains(httpResponse.statusCode) else {
+                    let error = HTTPError(rawValue: httpResponse.statusCode) ?? .unknown
+                    return completion(.failure(error))
+                }
 
-            completion(.success(data))
+                completion(.success(data))
+            }
         }
 
         task.resume()

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainButton: View {
-    var text: String
+    @Binding var text: String
     var action: () -> Void
 
     var body: some View {
@@ -30,6 +30,6 @@ struct MainButton: View {
 
 struct MainButton_Previews: PreviewProvider {
     static var previews: some View {
-        MainButton(text: "Copy", action: {})
+        MainButton(text: .constant("Copy"), action: {})
     }
 }

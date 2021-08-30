@@ -33,7 +33,6 @@ struct ShortlyApp: App {
     var body: some Scene {
         WindowGroup {
             ShortlyUIView(viewModel: main.makeShortlyViewModel())
-                .environment(\.managedObjectContext, main.coreDataStore.container.viewContext)
         }
     }
 }

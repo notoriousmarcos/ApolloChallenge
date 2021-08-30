@@ -11,27 +11,31 @@ struct ShortlyViewCell: View {
     var model: ShortlyURLViewModel
     var delete: (ShortlyURLViewModel) -> Void
 
+    private func HeaderView() -> some View {
+        return HStack(spacing: 10) {
+            Text(model.originalLink)
+                .font(.title2)
+                .foregroundColor(Colors.gray300)
+            Spacer()
+            Button(action: {
+                delete(model)
+            }, label: {
+                Image("del")
+                    .foregroundColor(Colors.gray300)
+            })
+        }
+    }
+
     var body: some View {
         return VStack(alignment: .leading) {
-            HStack(spacing: 10) {
-                Text(model.originalLink)
-                    .font(.title2)
-                    .foregroundColor(Colors.gray300)
-                Spacer()
-                Button(action: {
-                    delete(model)
-                }, label: {
-                    Image("del")
-                        .foregroundColor(Colors.gray300)
-                })
-            }
-            .padding(.horizontal, 23)
+            HeaderView()
+                .padding(.horizontal, 23)
             Divider().background(Colors.gray100)
             Text(model.shortLink)
                 .font(.title2)
                 .foregroundColor(Colors.primary)
                 .padding(.horizontal, 23)
-            MainButton(text: "Copy") {
+            MainButton(text: .constant("Copy")) {
                 UIPasteboard.general.string = model.shortLink
             }
             .padding(.all, 23)

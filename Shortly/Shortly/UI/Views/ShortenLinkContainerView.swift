@@ -9,15 +9,21 @@ import SwiftUI
 
 struct ShortenLinkContainerView: View {
     @State private var url: String = ""
+    @Binding var isLoading: Bool
     var createURL: (String) -> Void
     
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
-            TextField("Shorten a link here ...", text: $url)
-                .padding(20)
-                .background(Colors.white)
-            MainButton(text: "shorten it!") {
-                createURL(url)
+            if isLoading {
+                ProgressView()
+            } else {
+                TextField("Shorten a link here ...", text: $url)
+                    .padding(20)
+                    .background(Colors.white)
+                MainButton(text: .constant("shorten it!")) {
+                    createURL(url)
+                    url = ""
+                }
             }
         }
         .padding(50)
@@ -27,7 +33,7 @@ struct ShortenLinkContainerView: View {
 
 struct ShortenLinkContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        ShortenLinkContainerView(createURL: { _ in})
+        ShortenLinkContainerView(isLoading: .constant(false), createURL: { _ in})
             .previewLayout(.sizeThatFits)
     }
 }

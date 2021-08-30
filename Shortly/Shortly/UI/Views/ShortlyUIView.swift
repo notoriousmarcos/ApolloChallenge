@@ -7,21 +7,30 @@
 
 import SwiftUI
 
-struct ShortlyUIView<Model>: View where Model: ShortlyViewModelProtocol {
+struct ShortlyUIView<Model>: View where Model: ShortlyViewModel {
     @ObservedObject var viewModel: Model
+    @State private var showingAlert = false
 
     var body: some View {
         VStack {
             if viewModel.shortlyURLViewModels.isEmpty {
                 EmptyView()
             } else {
-                ShortlyListView(models: viewModel.shortlyURLViewModels, delete: viewModel.deleteURL(_:))
+                ShortlyListView(models: $viewModel.shortlyURLViewModels, delete: viewModel.deleteURL(_:))
             }
 
-            ShortenLinkContainerView(createURL: viewModel.createURL(_:))
+            ShortenLinkContainerView(isLoading: $viewModel.isGeneratingURL, createURL: viewModel.createURL(_:))
         }.onAppear(perform: {
             viewModel.onAppear()
         })
+        .alert(isPresented: Binding<Bool>(
+            get: { self.viewModel.alert?.isShowing ?? false },
+            set: { _ in }
+        )) {
+            Alert(title: Text(self.viewModel.alert?.title ?? "Alert"),
+                  message: Text(self.viewModel.alert?.message ?? "Unexpected"),
+                  dismissButton: .default(Text("OK")))
+        }
     }
 }
 

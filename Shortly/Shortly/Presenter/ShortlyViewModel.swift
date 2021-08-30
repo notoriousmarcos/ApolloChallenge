@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+public struct AlertInfo {
+    public let title: String
+    public let message: String
+    public let isShowing: Bool
+}
+
 public protocol ShortlyViewModelProtocol: ObservableObject {
     typealias RemoveAction = (ShortlyURLModel, @escaping (Bool) -> Void) -> Void
     typealias SaveAction = (ShortlyURLModel, @escaping (Bool) -> Void) -> Void
@@ -15,6 +21,7 @@ public protocol ShortlyViewModelProtocol: ObservableObject {
 
     var shortlyURLViewModels: [ShortlyURLViewModel] { get }
     var isGeneratingURL: Bool { get }
+    var alert: AlertInfo? { get }
 
     func onAppear()
     func createURL(_ urlString: String)
@@ -25,6 +32,7 @@ class ShortlyViewModel: ShortlyViewModelProtocol {
 
     @Published public var shortlyURLViewModels: [ShortlyURLViewModel] = []
     @Published public var isGeneratingURL: Bool = false
+    @Published public var alert: AlertInfo?
 
     private var shortURLs: [ShortlyURLModel] = []
     private var fetchAllURLs: FetchAllAction
@@ -59,6 +67,7 @@ class ShortlyViewModel: ShortlyViewModelProtocol {
                         }
                     }
                 case .failure(let error):
+                    self?.alert = AlertInfo(title: "Alert", message: error.localizedDescription, isShowing: true)
                     print(error.localizedDescription)
             }
 
@@ -87,7 +96,7 @@ class ShortlyViewModel: ShortlyViewModelProtocol {
                                             originalLink: $0.originalLink)
                     }
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    self?.alert = AlertInfo(title: "Alert", message: error.localizedDescription, isShowing: true)
             }
 
         }

@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct ShortlyListView: View {
-    @State var models: [ShortlyURLViewModel] = []
+    @Binding var models: [ShortlyURLViewModel]
     var delete: (ShortlyURLViewModel) -> Void
 
     var body: some View {
         List(models, id: \.code) { model in
             ShortlyViewCell(model: model, delete: delete)
+                .buttonStyle(PlainButtonStyle())
         }
     }
 }
 
 struct ShortlyListView_Previews: PreviewProvider {
     static var previews: some View {
-        ShortlyListView(models: [ShortlyURLViewModel(code: "Code", shortLink: "Short", originalLink: "original")], delete: { _ in})
+        ShortlyListView(models: .constant([ShortlyURLViewModel(code: "Code", shortLink: "Short", originalLink: "original")]), delete: { _ in})
     }
 }
